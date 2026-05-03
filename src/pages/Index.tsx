@@ -1,16 +1,30 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { CartProvider } from "@/components/leola/CartContext";
+import { Navbar } from "@/components/leola/Navbar";
+import { Hero } from "@/components/leola/Hero";
+import { ProductSection } from "@/components/leola/ProductSection";
+import { Collections } from "@/components/leola/Collections";
+import { Trust } from "@/components/leola/Trust";
+import { ComingSoon } from "@/components/leola/ComingSoon";
+import { Footer } from "@/components/leola/Footer";
+import { CartDrawer } from "@/components/leola/CartDrawer";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <CartProvider>
+      <div className="min-h-screen bg-background">
+        <Navbar />
+        <main>
+          <Hero />
+          <Trust />
+          <ProductSection />
+          <Collections />
+          <ComingSoon />
+        </main>
+        <Footer />
+        <CartDrawer />
+      </div>
+    </CartProvider>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
