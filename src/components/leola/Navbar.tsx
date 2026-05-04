@@ -11,7 +11,7 @@ export const Navbar = () => {
           <span className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground mt-0.5">Library of Scents</span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide text-foreground/80">
-          <a href="#shop" className="hover:text-rose-gold transition-smooth">Shop</a>
+          <a href="#core" className="hover:text-rose-gold transition-smooth">Shop</a>
           <a href="#collections" className="hover:text-rose-gold transition-smooth">Collections</a>
           <a href="#coming-soon" className="hover:text-rose-gold transition-smooth">Coming Soon</a>
           <a href="#footer" className="hover:text-rose-gold transition-smooth">Contact</a>
