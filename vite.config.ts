@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import react from '@vitejs/plugin-react-swc'
 import path from "path";
 // keep this line only if it already exists in your file:
 import { componentTagger } from "lovable-tagger";
