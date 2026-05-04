@@ -10,8 +10,14 @@ export const CartDrawer = () => {
   const checkoutAll = () => {
     // Front-end-only: open a PayPal tab per line item.
     // Replace with a single hosted cart link if you prefer.
+    const missing = items.filter((i) => !getPaypalLink(i.scent, i.sizeId as SizeId));
+    if (missing.length) {
+      alert("Please select a scent and size");
+      return;
+    }
     items.forEach((i) => {
-      window.open(getPaypalLink(i.scent, i.sizeId as SizeId), "_blank", "noopener,noreferrer");
+      const url = getPaypalLink(i.scent, i.sizeId as SizeId);
+      if (url) window.open(url, "_blank");
     });
   };
 

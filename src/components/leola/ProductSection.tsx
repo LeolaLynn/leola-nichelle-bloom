@@ -37,9 +37,15 @@ export const ProductSection = () => {
   };
 
   const handleBuyNow = () => {
-    // PAYPAL: opens the mapped link for selected scent + size
+    // PAYPAL: opens the mapped link for the selected scent + size in a new tab.
+    // If the link hasn't been pasted in src/components/leola/data.ts yet,
+    // we show a friendly message instead.
     const url = getPaypalLink(scent, sizeId);
-    window.open(url, "_blank", "noopener,noreferrer");
+    if (!url) {
+      toast.error("Please select a scent and size");
+      return;
+    }
+    window.open(url, "_blank");
   };
 
   return (

@@ -50,45 +50,92 @@ export type SizeId = (typeof SIZES)[number]["id"];
 
 // =====================================================================
 // PAYPAL LINKS
-// Replace each placeholder URL below with your real PayPal.me / hosted
-// button link for that exact scent + size combination.
-// Key format: `${scent}__${sizeId}`
+// ---------------------------------------------------------------------
+// Paste your real PayPal.me or PayPal hosted button links below.
+// Each scent has a "4 oz" and "8 oz" link.
+// To add a new scent: add a new block following the same format.
 // =====================================================================
-export const PAYPAL_LINKS: Record<string, string> = {
-  // ---- Everyday Signature ----
-  "Velvet__4oz": "https://www.paypal.com/REPLACE_VELVET_4OZ",
-  "Velvet__8oz": "https://www.paypal.com/REPLACE_VELVET_8OZ",
-  "Suede__4oz": "https://www.paypal.com/REPLACE_SUEDE_4OZ",
-  "Suede__8oz": "https://www.paypal.com/REPLACE_SUEDE_8OZ",
-  "Skullz On The Beach__4oz": "https://www.paypal.com/REPLACE_SKULLZ_4OZ",
-  "Skullz On The Beach__8oz": "https://www.paypal.com/REPLACE_SKULLZ_8OZ",
-  "Chocolate Under A Cherry Moon__4oz": "https://www.paypal.com/REPLACE_CHOCCHERRY_4OZ",
-  "Chocolate Under A Cherry Moon__8oz": "https://www.paypal.com/REPLACE_CHOCCHERRY_8OZ",
-  "Decadence__4oz": "https://www.paypal.com/REPLACE_DECADENCE_4OZ",
-  "Decadence__8oz": "https://www.paypal.com/REPLACE_DECADENCE_8OZ",
-  "Truffles At This Hour__4oz": "https://www.paypal.com/REPLACE_TRUFFLES_4OZ",
-  "Truffles At This Hour__8oz": "https://www.paypal.com/REPLACE_TRUFFLES_8OZ",
-  // ---- Gothic Romance ----
-  "Eternally Embraced__4oz": "https://www.paypal.com/REPLACE_ETERNALLY_4OZ",
-  "Eternally Embraced__8oz": "https://www.paypal.com/REPLACE_ETERNALLY_8OZ",
-  "Ashes of Roses__4oz": "https://www.paypal.com/REPLACE_ASHES_4OZ",
-  "Ashes of Roses__8oz": "https://www.paypal.com/REPLACE_ASHES_8OZ",
-  "Whispers at Twilight__4oz": "https://www.paypal.com/REPLACE_WHISPERS_4OZ",
-  "Whispers at Twilight__8oz": "https://www.paypal.com/REPLACE_WHISPERS_8OZ",
-  "Forever Berried__4oz": "https://www.paypal.com/REPLACE_BERRIED_4OZ",
-  "Forever Berried__8oz": "https://www.paypal.com/REPLACE_BERRIED_8OZ",
-  "Corvus__4oz": "https://www.paypal.com/REPLACE_CORVUS_4OZ",
-  "Corvus__8oz": "https://www.paypal.com/REPLACE_CORVUS_8OZ",
-  // ---- Limited / Mother's Day ----
-  "Bloom & Embrace__4oz": "https://www.paypal.com/REPLACE_BLOOM_4OZ",
-  "Bloom & Embrace__8oz": "https://www.paypal.com/REPLACE_BLOOM_8OZ",
-  "Petals & Promises__4oz": "https://www.paypal.com/REPLACE_PETALS_4OZ",
-  "Petals & Promises__8oz": "https://www.paypal.com/REPLACE_PETALS_8OZ",
-  "Soft Bloom__4oz": "https://www.paypal.com/REPLACE_SOFTBLOOM_4OZ",
-  "Soft Bloom__8oz": "https://www.paypal.com/REPLACE_SOFTBLOOM_8OZ",
-  "A Mother's Touch__4oz": "https://www.paypal.com/REPLACE_MOTHERS_4OZ",
-  "A Mother's Touch__8oz": "https://www.paypal.com/REPLACE_MOTHERS_8OZ",
+export const paypalLinks: Record<string, Record<"4 oz" | "8 oz", string>> = {
+  // ---- Everyday Signature Collection ----
+  "Velvet": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Suede": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Skullz On The Beach": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Chocolate Under A Cherry Moon": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Decadence": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Truffles At This Hour": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+
+  // ---- Gothic Romance Collection ----
+  "Eternally Embraced": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Ashes of Roses": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Whispers at Twilight": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Forever Berried": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Corvus": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+
+  // ---- Limited / Special Occasion Collection ----
+  "Bloom & Embrace": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Petals & Promises": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "Soft Bloom": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
+  "A Mother's Touch": {
+    "4 oz": "PASTE_LINK_HERE",
+    "8 oz": "PASTE_LINK_HERE",
+  },
 };
 
-export const getPaypalLink = (scent: string, size: SizeId) =>
-  PAYPAL_LINKS[`${scent}__${size}`] ?? "https://www.paypal.com/";
+// Map internal size id ("4oz" / "8oz") to the human label used as the key above.
+const SIZE_KEY: Record<SizeId, "4 oz" | "8 oz"> = {
+  "4oz": "4 oz",
+  "8oz": "8 oz",
+};
+
+/**
+ * Returns the PayPal link for a given scent + size, or null if not found
+ * or still set to the placeholder "PASTE_LINK_HERE".
+ */
+export const getPaypalLink = (scent: string, size: SizeId): string | null => {
+  const sizeKey = SIZE_KEY[size];
+  const link = paypalLinks[scent]?.[sizeKey];
+  if (!link || link === "PASTE_LINK_HERE") return null;
+  return link;
+};
