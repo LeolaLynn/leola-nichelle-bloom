@@ -9,7 +9,7 @@ import { toast } from "sonner";
 export const ProductSection = () => {
   const [collection, setCollection] = useState<CollectionKey>("everyday");
   const scents = COLLECTIONS[collection].scents;
-  const [scent, setScent] = useState<string>(scents[0]);
+  const [scent, setScent] = useState<string>(scents[0].name);
   const [sizeId, setSizeId] = useState<SizeId>("4oz");
   const [qty, setQty] = useState(1);
   const { add } = useCart();
@@ -17,8 +17,10 @@ export const ProductSection = () => {
   // keep scent valid when collection changes
   const ensureScent = (key: CollectionKey) => {
     setCollection(key);
-    setScent(COLLECTIONS[key].scents[0]);
+    setScent(COLLECTIONS[key].scents[0].name);
   };
+
+  const currentScent = scents.find((s) => s.name === scent) ?? scents[0];
 
   const size = useMemo(() => SIZES.find((s) => s.id === sizeId)!, [sizeId]);
 
@@ -95,9 +97,12 @@ export const ProductSection = () => {
                 className="luxe-select"
               >
                 {scents.map((s) => (
-                  <option key={s} value={s}>{s}</option>
+                  <option key={s.name} value={s.name}>{s.name}</option>
                 ))}
               </select>
+              <p className="mt-2 text-[11px] tracking-wide text-muted-foreground italic">
+                {currentScent.notes}
+              </p>
             </Field>
 
             {/* Size */}
