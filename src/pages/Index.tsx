@@ -1,7 +1,7 @@
 import { CartProvider } from "@/components/leola/CartContext";
 import { Navbar } from "@/components/leola/Navbar";
 import { Hero } from "@/components/leola/Hero";
-import { ProductSection } from "@/components/leola/ProductSection";
+import { CoreCollection } from "@/components/leola/CoreCollection";
 import { Collections } from "@/components/leola/Collections";
 import { Trust } from "@/components/leola/Trust";
 import { ComingSoon } from "@/components/leola/ComingSoon";
@@ -16,7 +16,7 @@ const Index = () => {
         <main>
           <Hero />
           <Trust />
-          <ProductSection />
+          <CoreCollection />
           <Collections />
           <ComingSoon />
         </main>
