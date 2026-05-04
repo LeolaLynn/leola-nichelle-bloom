@@ -25,9 +25,12 @@ export const Collections = () => {
               <h3 className="font-serif text-2xl text-primary mt-2 mb-5">{c.label}</h3>
               <ul className="space-y-2">
                 {c.scents.map((s) => (
-                  <li key={s} className="flex items-center gap-3 text-sm text-foreground/80">
-                    <span className="h-1 w-1 rounded-full bg-rose-gold" />
-                    {s}
+                  <li key={s.name} className="flex items-start gap-3 text-sm text-foreground/80">
+                    <span className="mt-2 h-1 w-1 rounded-full bg-rose-gold shrink-0" />
+                    <span>
+                      <span className="text-foreground">{s.name}</span>
+                      <span className="block text-xs text-muted-foreground italic">{s.notes}</span>
+                    </span>
                   </li>
                 ))}
               </ul>
