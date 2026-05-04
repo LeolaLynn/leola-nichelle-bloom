@@ -5,35 +5,37 @@
 
 export type CollectionKey = "everyday" | "gothic" | "limited";
 
-export const COLLECTIONS: Record<CollectionKey, { label: string; scents: string[] }> = {
+export type Scent = { name: string; notes: string };
+
+export const COLLECTIONS: Record<CollectionKey, { label: string; scents: Scent[] }> = {
   everyday: {
     label: "Everyday Signature Collection",
     scents: [
-      "Velvet",
-      "Suede",
-      "Skullz On The Beach",
-      "Chocolate Under A Cherry Moon",
-      "Decadence",
-      "Truffles At This Hour",
+      { name: "Velvet", notes: "Powdery Vanilla Musk, Amber, Sandalwood" },
+      { name: "Suede", notes: "Soft Leather, Woods, Golden Amber" },
+      { name: "Skullz On The Beach", notes: "Leather, Vintage Denim, Sea Breeze, Sandalwood" },
+      { name: "Chocolate Under A Cherry Moon", notes: "Dark Chocolate, Black Cherry, Warm Woods" },
+      { name: "Decadence", notes: "Salted Caramel, Cocoa, Smooth Woods" },
+      { name: "Truffles At This Hour", notes: "Chocolate, Caramel, Soft Woods" },
     ],
   },
   gothic: {
     label: "Gothic Romance Collection",
     scents: [
-      "Eternally Embraced",
-      "Ashes of Roses",
-      "Whispers at Twilight",
-      "Forever Berried",
-      "Corvus",
+      { name: "Eternally Embraced", notes: "Amber, Vanilla, Sandalwood" },
+      { name: "Ashes of Roses", notes: "Smoky Rose, Amber, Woods" },
+      { name: "Whispers at Twilight", notes: "Soft Musk, Amber, Night Florals" },
+      { name: "Forever Berried", notes: "Dark Berries, Vanilla, Amber" },
+      { name: "Corvus", notes: "Dark Woods, Amber, Soft Smoke" },
     ],
   },
   limited: {
     label: "Limited / Special Occasion Collection",
     scents: [
-      "Bloom & Embrace",
-      "Petals & Promises",
-      "Soft Bloom",
-      "A Mother's Touch",
+      { name: "Bloom & Embrace", notes: "Peony, Rose, Vanilla, White Musk" },
+      { name: "Petals & Promises", notes: "Rose, Jasmine, Sandalwood, Amber" },
+      { name: "Soft Bloom", notes: "Powdery Floral, Soft Musk, Light Vanilla" },
+      { name: "A Mother's Touch", notes: "Jasmine, White Musk, Amber, Vanilla" },
     ],
   },
 };
