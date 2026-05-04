@@ -4,6 +4,7 @@ import { Hero } from "@/components/leola/Hero";
 import { CoreCollection } from "@/components/leola/CoreCollection";
 import { Collections } from "@/components/leola/Collections";
 import { Trust } from "@/components/leola/Trust";
+import { Reviews } from "@/components/leola/Reviews";
 import { ComingSoon } from "@/components/leola/ComingSoon";
 import { Footer } from "@/components/leola/Footer";
 import { CartDrawer } from "@/components/leola/CartDrawer";
@@ -18,6 +19,7 @@ const Index = () => {
           <Trust />
           <CoreCollection />
           <Collections />
+          <Reviews />
           <ComingSoon />
         </main>
         <Footer />
