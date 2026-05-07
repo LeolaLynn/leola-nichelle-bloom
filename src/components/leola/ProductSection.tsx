@@ -26,11 +26,13 @@ export const ProductSection = () => {
 
   const handleAdd = () => {
     add({
+      productId: "body_oil",
+      productName: "Cloud Whip Body Oil",
       scent,
       collection: COLLECTIONS[collection].label,
       sizeLabel: size.label,
       sizeId: size.id,
-      price: size.price,
+      priceCents: size.price * 100,
       qty,
     });
     toast.success(`${scent} • ${size.label} added to bag`);
