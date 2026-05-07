@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { CheckCircle2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
 import { getStripeEnvironment } from "@/lib/stripe";
 
 type OrderItem = {
@@ -47,38 +46,28 @@ const OrderSuccess = () => {
     }
     let cancelled = false;
     let attempts = 0;
+    const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID as string;
+    const apikey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
     const fetchOrder = async () => {
       try {
-        const { data, error: fnErr } = await supabase.functions.invoke("get-order", {
-          method: "GET" as any,
-          body: undefined as any,
-          // we use a query string via headers; simpler: build URL manually
-        } as any);
-        // The Supabase JS client doesn't easily support query params — use fetch instead
-        throw new Error("__use_fetch__");
-        void data; void fnErr;
-      } catch {
-        // Fallback to direct fetch with query string
-        try {
-          const url = `https://uyssbuzimkygqdaghjex.supabase.co/functions/v1/get-order?session_id=${encodeURIComponent(sessionId)}&env=${getStripeEnvironment()}`;
-          const res = await fetch(url, { headers: { apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string } });
-          const json = await res.json();
-          if (cancelled) return;
-          if (json.order) {
-            setOrder(json.order);
-            setLoading(false);
-          } else if (json.pending && attempts < 5) {
-            attempts += 1;
-            setTimeout(fetchOrder, 1500);
-          } else {
-            setError(json.error || "Order not found yet. Please check your email.");
-            setLoading(false);
-          }
-        } catch (e: any) {
-          if (!cancelled) {
-            setError(e.message || "Could not load order");
-            setLoading(false);
-          }
+        const url = `https://${projectId}.supabase.co/functions/v1/get-order?session_id=${encodeURIComponent(sessionId)}&env=${getStripeEnvironment()}`;
+        const res = await fetch(url, { headers: { apikey, Authorization: `Bearer ${apikey}` } });
+        const json = await res.json();
+        if (cancelled) return;
+        if (json.order) {
+          setOrder(json.order);
+          setLoading(false);
+        } else if (json.pending && attempts < 5) {
+          attempts += 1;
+          setTimeout(fetchOrder, 1500);
+        } else {
+          setError(json.error || "Order not found yet. Please check your email.");
+          setLoading(false);
+        }
+      } catch (e: any) {
+        if (!cancelled) {
+          setError(e.message || "Could not load order");
+          setLoading(false);
         }
       }
     };
