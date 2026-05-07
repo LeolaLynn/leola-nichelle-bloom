@@ -8,7 +8,6 @@ import { Trust } from "@/components/leola/Trust";
 import { Reviews } from "@/components/leola/Reviews";
 import { ComingSoon } from "@/components/leola/ComingSoon";
 import { Footer } from "@/components/leola/Footer";
-import { CartDrawer } from "@/components/leola/CartDrawer";
 
 const Index = () => {
   return (
@@ -25,7 +24,6 @@ const Index = () => {
           <ComingSoon />
         </main>
         <Footer />
-        <CartDrawer />
     </div>
   );
 };
