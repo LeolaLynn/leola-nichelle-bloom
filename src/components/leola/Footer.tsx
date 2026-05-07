@@ -6,7 +6,7 @@ export const Footer = () => (
       <div>
         <h3 className="font-serif text-2xl">Leola Nichelle</h3>
         <p className="text-xs uppercase tracking-[0.3em] mt-1 text-primary-foreground/70">
-          Library of Scents &amp; Fragrance
+          Ritual Fragrance &amp; Skincare
         </p>
         <p className="mt-5 text-sm text-primary-foreground/70 max-w-xs italic font-serif">
           Soft skin. Warm scents. Everyday luxury.
