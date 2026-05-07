@@ -8,7 +8,7 @@ export const Navbar = () => {
       <div className="container flex items-center justify-between py-4">
         <a href="#top" className="flex flex-col leading-none">
           <span className="font-serif text-xl md:text-2xl tracking-wide text-primary">Leola Nichelle</span>
-          <span className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground mt-0.5">Library of Scents</span>
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground mt-0.5">Ritual Fragrance &amp; Skincare</span>
         </a>
         <nav className="hidden md:flex items-center gap-8 text-sm tracking-wide text-foreground/80">
           <a href="#core" className="hover:text-rose-gold transition-smooth">Shop</a>
