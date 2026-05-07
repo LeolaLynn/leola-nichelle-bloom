@@ -34,7 +34,7 @@ Deno.serve(async (req) => {
         product_data: {
           name: i.scent ? `${i.product_name} — ${i.scent}` : i.product_name,
           description: i.size_label || undefined,
-          tax_code: "txcd_30070000", // Cosmetics / general tangible goods
+          tax_code: "txcd_99999999", // General - Tangible Goods (physical skincare/body products)
         },
         unit_amount: i.unit_price_cents,
         tax_behavior: "exclusive" as const,
