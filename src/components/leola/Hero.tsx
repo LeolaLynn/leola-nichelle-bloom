@@ -26,7 +26,7 @@ export const Hero = () => {
             <span className="italic text-cocoa">Nichelle</span>
           </h1>
           <p className="mt-3 text-sm md:text-base uppercase tracking-[0.3em] text-muted-foreground">
-            Library of Scents &amp; Fragrance
+            Ritual Fragrance &amp; Skincare
           </p>
           <p className="mt-8 font-serif italic text-2xl md:text-3xl text-cocoa/90 text-balance">
             Soft skin. Warm scents. Everyday luxury.
