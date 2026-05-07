@@ -1,4 +1,3 @@
-import { CartProvider } from "@/components/leola/CartContext";
 import { Navbar } from "@/components/leola/Navbar";
 import { Hero } from "@/components/leola/Hero";
 import { CoreCollection } from "@/components/leola/CoreCollection";
@@ -13,8 +12,7 @@ import { CartDrawer } from "@/components/leola/CartDrawer";
 
 const Index = () => {
   return (
-    <CartProvider>
-      <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
         <Navbar />
         <main>
           <Hero />
@@ -28,8 +26,7 @@ const Index = () => {
         </main>
         <Footer />
         <CartDrawer />
-      </div>
-    </CartProvider>
+    </div>
   );
 };
 
