@@ -7,8 +7,8 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import OrderSuccess from "./pages/OrderSuccess.tsx";
 import OrderCancel from "./pages/OrderCancel.tsx";
-import { PaymentTestModeBanner } from "./components/PaymentTestModeBanner";
 import { CartProvider } from "@/components/leola/CartContext";
+import { RootLayout } from "@/components/leola/RootLayout";
 
 const queryClient = new QueryClient();
 
@@ -17,18 +17,19 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <CartProvider>
-          <PaymentTestModeBanner />
+      <CartProvider>
+        <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/order/success" element={<OrderSuccess />} />
-            <Route path="/order/cancel" element={<OrderCancel />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
+            <Route element={<RootLayout />}>
+              <Route path="/" element={<Index />} />
+              <Route path="/order/success" element={<OrderSuccess />} />
+              <Route path="/order/cancel" element={<OrderCancel />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Route>
           </Routes>
-        </CartProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </CartProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
