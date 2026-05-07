@@ -92,6 +92,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
 export const useCart = () => {
   const c = useContext(Ctx);
-  if (!c) throw new Error("useCart must be used inside CartProvider");
+  if (!c) {
+    if (import.meta.env.DEV) {
+      // Friendly dev guard: log the React owner stack so the offending
+      // component is easy to find when CartProvider is missing.
+      // eslint-disable-next-line no-console
+      console.error(
+        "[CartContext] useCart() was called outside <CartProvider>.\n" +
+          "Make sure the component is rendered inside <RootLayout /> in App.tsx.\n" +
+          "Component tree:",
+        new Error("useCart call site").stack,
+      );
+    }
+    throw new Error("useCart must be used inside CartProvider");
+  }
   return c;
 };
