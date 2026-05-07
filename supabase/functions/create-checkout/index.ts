@@ -58,7 +58,7 @@ Deno.serve(async (req) => {
       ui_mode: "embedded_page",
       return_url: returnUrl,
       line_items,
-      automatic_tax: { enabled: true },
+      automatic_tax: { enabled: false },
       shipping_address_collection: { allowed_countries: ["US"] },
       shipping_options: [
         {
