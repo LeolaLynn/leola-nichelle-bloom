@@ -1,12 +1,15 @@
 import { createContext, useContext, useMemo, useState, ReactNode } from "react";
+import { bundleDiscountPercent } from "./scents";
 
 export type CartItem = {
-  id: string; // unique key per scent+size
+  id: string;             // unique key per product+scent+size
+  productId: string;      // body_oil | scrub | roll_on
+  productName: string;    // e.g. "Cloud Whip Body Oil"
   scent: string;
   collection: string;
   sizeLabel: string;
   sizeId: string;
-  price: number;
+  priceCents: number;
   qty: number;
 };
 
@@ -15,10 +18,14 @@ type CartCtx = {
   isOpen: boolean;
   open: () => void;
   close: () => void;
-  add: (item: Omit<CartItem, "id" | "qty"> & { qty: number }) => void;
+  add: (item: Omit<CartItem, "id" | "qty"> & { qty?: number }) => void;
   remove: (id: string) => void;
   updateQty: (id: string, qty: number) => void;
-  subtotal: number;
+  clear: () => void;
+  subtotalCents: number;
+  discountPercent: number;
+  discountCents: number;
+  totalCents: number;
   count: number;
 };
 
@@ -29,15 +36,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const add: CartCtx["add"] = (item) => {
-    const id = `${item.scent}__${item.sizeId}`;
+    const qty = item.qty ?? 1;
+    const id = `${item.productId}__${item.scent}__${item.sizeId}`;
     setItems((prev) => {
       const existing = prev.find((p) => p.id === id);
       if (existing) {
         return prev.map((p) =>
-          p.id === id ? { ...p, qty: p.qty + item.qty } : p
+          p.id === id ? { ...p, qty: p.qty + qty } : p
         );
       }
-      return [...prev, { ...item, id }];
+      return [...prev, { ...item, qty, id }];
     });
     setIsOpen(true);
   };
@@ -50,11 +58,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       prev.map((p) => (p.id === id ? { ...p, qty: Math.max(1, qty) } : p))
     );
 
-  const subtotal = useMemo(
-    () => items.reduce((s, i) => s + i.price * i.qty, 0),
+  const subtotalCents = useMemo(
+    () => items.reduce((s, i) => s + i.priceCents * i.qty, 0),
     [items]
   );
   const count = useMemo(() => items.reduce((s, i) => s + i.qty, 0), [items]);
+  const discountPercent = useMemo(() => bundleDiscountPercent(count), [count]);
+  const discountCents = Math.round((subtotalCents * discountPercent) / 100);
+  const totalCents = subtotalCents - discountCents;
 
   return (
     <Ctx.Provider
@@ -66,7 +77,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         add,
         remove,
         updateQty,
-        subtotal,
+        clear: () => setItems([]),
+        subtotalCents,
+        discountPercent,
+        discountCents,
+        totalCents,
         count,
       }}
     >
