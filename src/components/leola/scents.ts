@@ -248,7 +248,7 @@ export const SCENTS: Scent[] = [
   },
   {
     slug: "power-of-you",
-    name: "Power of You Inspired",
+    name: "Summer Muse",
     collection: "Everyday",
     tagline: "Feminine, confident, addictive.",
     story:
