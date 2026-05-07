@@ -14,7 +14,101 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      order_items: {
+        Row: {
+          created_at: string
+          id: string
+          line_total_cents: number
+          order_id: string
+          product_name: string
+          quantity: number
+          scent: string | null
+          size_label: string | null
+          unit_price_cents: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          line_total_cents: number
+          order_id: string
+          product_name: string
+          quantity?: number
+          scent?: string | null
+          size_label?: string | null
+          unit_price_cents: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          line_total_cents?: number
+          order_id?: string
+          product_name?: string
+          quantity?: number
+          scent?: string | null
+          size_label?: string | null
+          unit_price_cents?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "order_items_order_id_fkey"
+            columns: ["order_id"]
+            isOneToOne: false
+            referencedRelation: "orders"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      orders: {
+        Row: {
+          created_at: string
+          currency: string
+          customer_email: string | null
+          customer_name: string | null
+          discount_cents: number
+          environment: string
+          id: string
+          shipping_address: Json | null
+          shipping_cents: number
+          status: string
+          stripe_session_id: string
+          subtotal_cents: number
+          tax_cents: number
+          total_cents: number
+        }
+        Insert: {
+          created_at?: string
+          currency?: string
+          customer_email?: string | null
+          customer_name?: string | null
+          discount_cents?: number
+          environment?: string
+          id?: string
+          shipping_address?: Json | null
+          shipping_cents?: number
+          status?: string
+          stripe_session_id: string
+          subtotal_cents?: number
+          tax_cents?: number
+          total_cents?: number
+        }
+        Update: {
+          created_at?: string
+          currency?: string
+          customer_email?: string | null
+          customer_name?: string | null
+          discount_cents?: number
+          environment?: string
+          id?: string
+          shipping_address?: Json | null
+          shipping_cents?: number
+          status?: string
+          stripe_session_id?: string
+          subtotal_cents?: number
+          tax_cents?: number
+          total_cents?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
