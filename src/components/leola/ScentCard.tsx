@@ -125,7 +125,7 @@ export const ScentCard = ({ scent }: { scent: Scent }) => {
                     : "bg-background text-cocoa border-border hover:border-cocoa"
                 }`}
               >
-                {PRODUCT_TYPES[id].label.replace("Cloud Whip ", "")}
+                {PRODUCT_TYPES[id].label}
               </button>
             ))}
         </div>
