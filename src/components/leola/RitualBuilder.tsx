@@ -23,7 +23,7 @@ type Pick = {
 
 /**
  * Interactive Ritual Builder
- * Customers compose a ritual from Scrub + Cloud Whip Body Oil + Roll-On
+ * Customers compose a ritual from Scrub + Luxury Body Oil Soufflé + Roll-On
  * with bundle pricing applied in real time:
  *   2 items = 10% off · 3 items = 15% off · 4+ items = 20% off
  */
@@ -91,7 +91,7 @@ export const RitualBuilder = () => {
             Build Your Ritual
           </h2>
           <p className="mt-5 text-muted-foreground max-w-2xl mx-auto">
-            Layer Cloud Whip Body Oil with Roll-On Perfume Oil — your discount grows as your ritual does.
+            Layer Luxury Body Oil Soufflé with Roll-On Perfume Oil — your discount grows as your ritual does.
           </p>
         </div>
 
