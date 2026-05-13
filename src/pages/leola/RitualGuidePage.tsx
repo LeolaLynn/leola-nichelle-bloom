@@ -1,7 +1,7 @@
 import { PageShell } from "@/components/leola/PageShell";
 
 const steps = [
-  { n: "01", t: "Warm the skin", b: "After a shower or bath, while skin is still warm and slightly damp, scoop a small dollop of Cloud Whip Body Oil." },
+  { n: "01", t: "Warm the skin", b: "After a shower or bath, while skin is still warm and slightly damp, scoop a small dollop of Luxury Body Oil Soufflé." },
   { n: "02", t: "Melt and smooth", b: "Press into skin — pulse points first (wrists, neck, décolleté). The whipped texture transforms into a silky dry-touch oil on contact." },
   { n: "03", t: "Layer the perfume oil", b: "Roll the matching Roll-On Perfume Oil over pulse points. The oil base anchors the scent and makes it last hours longer." },
   { n: "04", t: "Repeat at night", b: "Reapply before bed. Scent develops in warmth — your sheets, your robe, your skin will hold it through the night." },

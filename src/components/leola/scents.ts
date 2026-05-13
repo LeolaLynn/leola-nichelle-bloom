@@ -37,7 +37,7 @@ export const PRODUCT_TYPES: Record<
 > = {
   body_oil: {
     id: "body_oil",
-    label: "Cloud Whip Body Oil",
+    label: "Luxury Body Oil Soufflé",
     description:
       "A marshmallow-soft whipped oil that melts into skin with a silky, non-greasy finish.",
     sizes: [
