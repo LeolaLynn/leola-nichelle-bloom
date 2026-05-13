@@ -29,14 +29,14 @@ export const Hero = () => {
             Everyday Luxury.
           </h1>
           <p className="mt-7 font-serif italic text-xl md:text-2xl text-cocoa/90 text-balance max-w-md mx-auto md:mx-0">
-            Fragrance rituals designed to melt into skin and memory.
+            A boutique fragrance house, hidden inside a body ritual.
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-cocoa rounded-full px-10 py-6 text-sm tracking-[0.2em] uppercase shadow-elegant">
-              <Link to="/collections/core">Shop The Core Collection</Link>
+              <a href="#featured">Shop The Ritual</a>
             </Button>
             <Button asChild variant="outline" size="lg" className="rounded-full px-10 py-6 text-sm tracking-[0.2em] uppercase border-cocoa/40 text-cocoa hover:bg-cocoa hover:text-cream">
-              <Link to="/ritual-guide">The Ritual</Link>
+              <a href="#library">Explore Scents</a>
             </Button>
           </div>
         </div>
