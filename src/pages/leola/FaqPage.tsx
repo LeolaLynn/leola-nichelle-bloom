@@ -8,7 +8,7 @@ const FAQS = [
   { q: "Do you ship internationally?", a: "Currently U.S. shipping only. Join the Ritual List to be notified when international shipping opens." },
   { q: "What's your return policy?", a: "Unopened products may be returned within 14 days of delivery. Used products are final sale due to the nature of skincare." },
   { q: "When do future collections drop?", a: "Endless Summer is planned for the next summer drop, Gothic Romance for fall, and Holiday for winter. Join each waitlist for early access." },
-  { q: "Is the Cloud Whip safe for sensitive skin?", a: "Our formulas are designed to be gentle. We recommend a patch test for very sensitive skin." },
+  { q: "Is the Luxury Body Oil Soufflé safe for sensitive skin?", a: "Our formulas are designed to be gentle. We recommend a patch test for very sensitive skin." },
 ];
 
 const FaqPage = () => (
