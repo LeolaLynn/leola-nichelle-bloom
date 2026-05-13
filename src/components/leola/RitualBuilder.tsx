@@ -29,9 +29,10 @@ type Pick = {
  */
 export const RitualBuilder = () => {
   const [picks, setPicks] = useState<Pick[]>([]);
-  const [productId, setProductId] = useState<ProductTypeId>("scrub");
-  const [scent, setScent] = useState<string>(SCENTS[0].name);
-  const [sizeId, setSizeId] = useState<string>(PRODUCT_TYPES.scrub.sizes[0].id);
+  const [productId, setProductId] = useState<ProductTypeId>("body_oil");
+  const coreScents = SCENTS.filter((s) => s.collection === "Core");
+  const [scent, setScent] = useState<string>(coreScents[0].name);
+  const [sizeId, setSizeId] = useState<string>(PRODUCT_TYPES.body_oil.sizes[0].id);
   const { add, open } = useCart();
 
   const product = PRODUCT_TYPES[productId];
@@ -90,7 +91,7 @@ export const RitualBuilder = () => {
             Build Your Ritual
           </h2>
           <p className="mt-5 text-muted-foreground max-w-2xl mx-auto">
-            Combine sugar scrubs, Cloud Whip Body Oil, and roll-on perfume — your discount grows as your ritual does.
+            Layer Cloud Whip Body Oil with Roll-On Perfume Oil — your discount grows as your ritual does.
           </p>
         </div>
 
@@ -140,7 +141,7 @@ export const RitualBuilder = () => {
                 onChange={(e) => setScent(e.target.value)}
                 className="luxe-select"
               >
-                {SCENTS.filter((s) => s.availableIn[productId]).map((s) => (
+                {coreScents.filter((s) => s.availableIn[productId]).map((s) => (
                   <option key={s.slug} value={s.name}>{s.name}</option>
                 ))}
               </select>

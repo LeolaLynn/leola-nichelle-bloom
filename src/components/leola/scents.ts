@@ -1,51 +1,45 @@
 // =====================================================================
 // LEOLA NICHELLE — SCENT LIBRARY
 // ---------------------------------------------------------------------
-// Single source of truth for every scent. Edit names, stories, notes,
-// texture experience, reviews, and product availability here.
-// Prices are set per PRODUCT TYPE below in PRODUCT_TYPES.
+// Single source of truth for every scent.
 // =====================================================================
 
 export type Review = {
-  name: string;     // First name + last initial
+  name: string;
   stars: 3 | 4 | 5;
   quote: string;
 };
 
+export type CollectionId = "Core" | "Endless Summer" | "Gothic Romance" | "Holiday";
+
 export type Scent = {
   slug: string;
   name: string;
-  collection: "Everyday" | "Gothic Romance" | "Summer (Limited)";
-  tagline: string;          // one-line poetic summary
-  story: string;            // longer paragraph — the "why"
+  collection: CollectionId;
+  tagline: string;
+  story: string;
+  whatItSmellsLike?: string;
   notes: { top: string[]; heart: string[]; base: string[] };
-  texture: string;          // texture / wear / sillage experience
+  texture: string;
   reviews: Review[];
-  // Which products this scent is available in:
-  availableIn: { body_oil: boolean; scrub: boolean; roll_on: boolean };
+  availableIn: { body_oil: boolean; roll_on: boolean };
 };
 
 // =====================================================================
-// PRODUCT TYPES — edit prices and sizes here
+// PRODUCT TYPES
 // =====================================================================
-export type ProductTypeId = "body_oil" | "scrub" | "roll_on";
+export type ProductTypeId = "body_oil" | "roll_on";
 export type SizeOption = { id: string; label: string; priceCents: number };
 
 export const PRODUCT_TYPES: Record<
   ProductTypeId,
-  { id: ProductTypeId; label: string; sizes: SizeOption[] }
+  { id: ProductTypeId; label: string; description: string; sizes: SizeOption[] }
 > = {
   body_oil: {
     id: "body_oil",
     label: "Cloud Whip Body Oil",
-    sizes: [
-      { id: "4oz", label: "4 oz", priceCents: 1400 },
-      { id: "8oz", label: "8 oz", priceCents: 2400 },
-    ],
-  },
-  scrub: {
-    id: "scrub",
-    label: "Sugar Scrub",
+    description:
+      "A marshmallow-soft whipped oil that melts into skin with a silky, non-greasy finish.",
     sizes: [
       { id: "4oz", label: "4 oz", priceCents: 1400 },
       { id: "8oz", label: "8 oz", priceCents: 2400 },
@@ -54,6 +48,8 @@ export const PRODUCT_TYPES: Record<
   roll_on: {
     id: "roll_on",
     label: "Roll-On Perfume Oil",
+    description:
+      "A pulse-point ritual — slow, sensual scent that warms with the skin and lingers softly through the day.",
     sizes: [
       { id: "10ml", label: "10 ml", priceCents: 1400 },
       { id: "20ml", label: "20 ml", priceCents: 2400 },
@@ -62,7 +58,7 @@ export const PRODUCT_TYPES: Record<
 };
 
 // =====================================================================
-// BUNDLE DISCOUNTS — applied automatically by the Ritual Builder
+// BUNDLE DISCOUNTS
 // =====================================================================
 export const BUNDLE_TIERS = [
   { minItems: 4, percent: 20, label: "4+ items — 20% off your ritual" },
@@ -76,42 +72,47 @@ export function bundleDiscountPercent(itemCount: number): number {
 }
 
 // =====================================================================
-// SCENTS — add/edit scents below
+// SCENTS
 // =====================================================================
 export const SCENTS: Scent[] = [
+  // ============== CORE COLLECTION ==============
   {
     slug: "velvet",
     name: "Velvet",
-    collection: "Everyday",
-    tagline: "Cashmere on bare skin.",
+    collection: "Core",
+    tagline: "Soft plush luxury. Golden comfort.",
     story:
-      "Velvet is the scent of being held. Powdery vanilla unfurls into golden amber and sandalwood — soft enough for daytime, intimate enough for the moments after.",
+      "Velvet is the scent of being held — powdery vanilla unfurls into golden amber and creamy sandalwood. Warm enough for daytime, intimate enough for the moments after.",
+    whatItSmellsLike:
+      "Cashmere on bare skin. Warm vanilla, candlelit amber, and the soft glow of sandalwood drifting close to the body.",
     notes: {
-      top: ["Powdered Vanilla", "Soft Musk"],
-      heart: ["Warm Amber", "Cashmere Wood"],
-      base: ["Sandalwood", "Skin Musk"],
+      top: ["Vanilla"],
+      heart: ["Amber"],
+      base: ["Sandalwood"],
     },
     texture:
       "Whips into a cloud and melts the second it touches warm skin. Leaves a soft, glowing finish — never sticky, never heavy.",
     reviews: [
       { name: "Tasha M.", stars: 5, quote: "VELVET smells AMAZING. Soft, creamy, cozy… like expensive vanilla cashmere." },
       { name: "Danielle R.", stars: 5, quote: "This is one of those scents that makes people hug you longer lol." },
-      { name: "Nia C.", stars: 5, quote: "Oooh I love how soft and smooth the texture is. Other body butters I've used were hard or gritty… this feels PERFECT." },
-      { name: "Shanice W.", stars: 5, quote: "THIS IS THE TEXTURE I'VE BEEN LOOKING FOR!!! THANK YOU!! perfectly soft and creamy." },
+      { name: "Nia C.", stars: 5, quote: "Oooh I love how soft and smooth the texture is. This feels PERFECT." },
+      { name: "Shanice W.", stars: 5, quote: "THIS IS THE TEXTURE I'VE BEEN LOOKING FOR — perfectly soft and creamy." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
     slug: "suede",
     name: "Suede",
-    collection: "Everyday",
-    tagline: "Refined, intimate, unmistakably you.",
+    collection: "Core",
+    tagline: "Dark smooth sophistication.",
     story:
-      "Soft tumbled leather wrapped in golden amber and quiet woods — a scent that whispers instead of shouts. Rich without ever being loud.",
+      "A velvet jacket of a scent — smoky tobacco ebony folded into supple leather and warm amber. Rich, smooth, and unmistakably grown.",
+    whatItSmellsLike:
+      "Warm smoky luxury. Tobacco-kissed leather wrapped in golden amber — the hush of a candlelit room and a coat slung over a chair.",
     notes: {
-      top: ["Soft Leather", "Bergamot Whisper"],
-      heart: ["Golden Amber", "Iris"],
-      base: ["Cedar", "Vanilla Drift"],
+      top: ["Tobacco Ebony"],
+      heart: ["Leather"],
+      base: ["Amber"],
     },
     texture:
       "Slips on like silk and warms into the skin. Wears close — beautifully personal sillage.",
@@ -120,41 +121,45 @@ export const SCENTS: Scent[] = [
       { name: "Erica T.", stars: 5, quote: "My husband actually asked what fragrance I was wearing and he NEVER notices stuff like that." },
       { name: "Kelsey N.", stars: 4, quote: "I usually go for sweeter scents but this one surprised me. Very clean luxury vibes." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
     slug: "skullz-on-the-beach",
     name: "Skullz On The Beach",
-    collection: "Everyday",
-    tagline: "Salt-air leather, effortlessly cool.",
+    collection: "Core",
+    tagline: "Dangerous coastal luxury.",
     story:
-      "Sun-warmed leather, vintage denim, and a salted breeze drifting through sandalwood. The scent of someone fine walking past you on the boardwalk.",
+      "Salted ocean mist drifting over worn leather and aged woods — the scent of a stormy coastline, a weathered jacket, and the kind of cool that doesn't try.",
+    whatItSmellsLike:
+      "Salt air and dark wood. Worn leather warmed by sun, finished with the cold luxury of a misted shoreline.",
     notes: {
-      top: ["Sea Breeze", "Citrus Salt"],
-      heart: ["Vintage Leather", "Driftwood"],
-      base: ["Sandalwood", "Warm Musk"],
+      top: ["Ocean Mist"],
+      heart: ["Worn Leather"],
+      base: ["Aged Woods"],
     },
     texture:
       "Lightweight and airy — perfect for warmer temps. Never sticky, never overwhelming.",
     reviews: [
-      { name: "Vanessa G.", stars: 5, quote: "Decadence was too caramel sweet for me but Skullz On The Beach is my FOREVER buy." },
-      { name: "Monique D.", stars: 5, quote: "This smells like warm skin, salty air, and somebody fine walking past you at the beach 😂" },
+      { name: "Vanessa G.", stars: 5, quote: "Skullz On The Beach is my FOREVER buy." },
+      { name: "Monique D.", stars: 5, quote: "This smells like warm skin, salty air, and somebody fine walking past you 😂" },
       { name: "Ashley P.", stars: 5, quote: "I love that it's lightweight for warmer temps. Doesn't feel sticky at ALL." },
-      { name: "Renee H.", stars: 5, quote: "Skullz On The Beach smells SOOO good omg. Definitely unisex in the best way." },
+      { name: "Renee H.", stars: 5, quote: "Definitely unisex in the best way." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
     slug: "decadence",
     name: "Decadence",
-    collection: "Everyday",
-    tagline: "Salted caramel & cocoa indulgence.",
+    collection: "Core",
+    tagline: "Dark gourmand luxury.",
     story:
-      "Salted caramel folded into rich cocoa and smooth woods. Pure, slow, delicious indulgence — the dessert version of self-care.",
+      "Salted caramel poured slowly over wood-kissed cocoa — a slow, edible indulgence. The dessert version of self-care, dressed in warm woods.",
+    whatItSmellsLike:
+      "Melted caramel and dark chocolate folded into warm espresso wood — rich, addictive, edible without being childish.",
     notes: {
       top: ["Salted Caramel"],
-      heart: ["Cocoa", "Brown Sugar"],
-      base: ["Smooth Woods", "Vanilla"],
+      heart: ["Wood-Kissed Cocoa"],
+      base: ["Smooth Woods"],
     },
     texture:
       "Rich, buttery whip that melts into a long-wearing gourmand glow.",
@@ -162,59 +167,59 @@ export const SCENTS: Scent[] = [
       { name: "Jasmine B.", stars: 5, quote: "My favorite is Decadence. I've been looking for a caramel scent and THIS is THE one." },
       { name: "Lori S.", stars: 5, quote: "Smells like warm gooey caramel and melted chocolate. Literally addictive." },
       { name: "Melissa K.", stars: 4, quote: "Very sweet and rich. A little goes a long way for me personally." },
-      { name: "Andrea T.", stars: 3, quote: "The texture is BEAUTIFUL but the caramel note was sweeter than what I normally wear." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
-    slug: "cashmere-glow",
-    name: "Cashmere Glow",
-    collection: "Everyday",
-    tagline: "Comforting and expensive at once.",
+    slug: "hush",
+    name: "Hush",
+    collection: "Core",
+    tagline: "Soft emotional comfort.",
     story:
-      "Soft musk, warm vanilla, and a golden hush of amber. Luminous comfort — the scent of a hotel robe and warm bath light.",
+      "A calming evening fragrance built around chamomile, warm vanilla, soft amber, and a quiet trace of honeysuckle drifting through nighttime air. Hush is the scent of slowing down.",
+    whatItSmellsLike:
+      "Creamy vanilla warmth, golden amber softness, delicate chamomile, and a gentle trace of honeysuckle drifting through warm nighttime air.",
     notes: {
-      top: ["Soft Musk"],
-      heart: ["Vanilla Silk", "Cashmere"],
-      base: ["Golden Amber"],
+      top: ["Chamomile", "Honeysuckle"],
+      heart: ["Warm Vanilla"],
+      base: ["Soft Amber"],
     },
     texture:
-      "Pillowy and weightless, leaving skin glowing without any shimmer.",
+      "Pillowy whip that melts into a warm, weightless glow — designed for nighttime rituals and quiet rooms.",
     reviews: [
-      { name: "Nicole A.", stars: 5, quote: "Cashmere Glow smells comforting and expensive at the same time." },
-      { name: "Faith J.", stars: 5, quote: "This one feels like soft blankets, warm skin, and a luxury hotel robe." },
+      { name: "Amaya T.", stars: 5, quote: "Hush is the most calming scent I own. I sleep better wearing it, no joke." },
+      { name: "Sienna B.", stars: 5, quote: "Soft, golden, comforting — like being wrapped in a warm blanket." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
+
+  // ============== ENDLESS SUMMER (Future) ==============
   {
     slug: "tropical-glow",
     name: "Tropical Glow",
-    collection: "Summer (Limited)",
+    collection: "Endless Summer",
     tagline: "Happy in a jar.",
     story:
-      "Sun-kissed coconut, creamy tiare, and a soft golden warmth. A getaway captured in a bottle — small batch, here for the season.",
+      "Sun-kissed coconut, creamy tiare, and a soft golden warmth. A getaway captured in a bottle — coming with the Endless Summer drop.",
     notes: {
       top: ["Coconut Water", "Pineapple Mist"],
       heart: ["Tiare Flower", "Frangipani"],
       base: ["Vanilla Sand", "White Musk"],
     },
-    texture:
-      "Light, juicy, glowy. Wears like vacation skin.",
+    texture: "Light, juicy, glowy. Wears like vacation skin.",
     reviews: [
-      { name: "Stephanie M.", stars: 5, quote: "Tropical Glow makes me think of my honeymoon in Tahiti. EVEN my husband loves the way it smells." },
-      { name: "Kayla R.", stars: 5, quote: "This smells like golden vacation skin and sunshine." },
-      { name: "Bianca T.", stars: 5, quote: "Tropical Glow is HAPPY in a jar. I can't explain it better than that lol." },
-      { name: "Marissa D.", stars: 5, quote: "I need this as a body mist IMMEDIATELY." },
+      { name: "Stephanie M.", stars: 5, quote: "Tropical Glow makes me think of my honeymoon in Tahiti." },
+      { name: "Bianca T.", stars: 5, quote: "Tropical Glow is HAPPY in a jar." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
     slug: "mango-madness",
     name: "Mango Madness",
-    collection: "Summer (Limited)",
+    collection: "Endless Summer",
     tagline: "Juicy & creamy summer ritual.",
     story:
-      "Ripe mango spun into creamy tropical warmth. Not fake — warm, golden, real.",
+      "Ripe mango spun into creamy tropical warmth — golden, real, never fake.",
     notes: {
       top: ["Ripe Mango"],
       heart: ["Cream", "Coconut Milk"],
@@ -222,18 +227,17 @@ export const SCENTS: Scent[] = [
     },
     texture: "Buttery whip, lush sillage, perfect for hot afternoons.",
     reviews: [
-      { name: "Cierra W.", stars: 5, quote: "Mango Madness smells juicy and creamy at the same time. Perfect summer scent." },
-      { name: "Leah P.", stars: 5, quote: "Not fake mango at all. Smells warm and tropical." },
+      { name: "Cierra W.", stars: 5, quote: "Mango Madness smells juicy and creamy at the same time." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
     slug: "berried-treasure",
     name: "Berried Treasure",
-    collection: "Summer (Limited)",
+    collection: "Endless Summer",
     tagline: "Edible in the best way.",
     story:
-      "Wild berries lifted by a soft floral lift and a luxurious base. Fruity, but grown.",
+      "Wild berries lifted by a soft floral whisper and a luxurious base. Fruity, but grown.",
     notes: {
       top: ["Wild Berries", "Black Currant"],
       heart: ["Rose Petal"],
@@ -242,17 +246,16 @@ export const SCENTS: Scent[] = [
     texture: "Smooth and weightless. Stays bright on the skin for hours.",
     reviews: [
       { name: "Courtney F.", stars: 5, quote: "Berried Treasure smells edible in the BEST way." },
-      { name: "Alyssa H.", stars: 5, quote: "It smells fruity but still grown and luxurious." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
-    slug: "power-of-you",
+    slug: "summer-muse",
     name: "Summer Muse",
-    collection: "Everyday",
+    collection: "Endless Summer",
     tagline: "Feminine, confident, addictive.",
     story:
-      "A scent for the version of you that walks into the room first. Floral musk wrapped in golden warmth.",
+      "A scent for the version of you that walks into the room first — floral musk wrapped in golden warmth.",
     notes: {
       top: ["Pink Pepper"],
       heart: ["Tuberose", "Jasmine"],
@@ -261,10 +264,11 @@ export const SCENTS: Scent[] = [
     texture: "Sheer at first, then blooming — long-lasting on warm skin.",
     reviews: [
       { name: "Tiana S.", stars: 5, quote: "This smells feminine, confident, and kinda addictive honestly." },
-      { name: "Morgan C.", stars: 5, quote: "I kept smelling my own arm all day 😂" },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
+
+  // ============== GOTHIC ROMANCE (Future) ==============
   {
     slug: "eternally-embraced",
     name: "Eternally Embraced",
@@ -279,11 +283,10 @@ export const SCENTS: Scent[] = [
     },
     texture: "Velvety and warm. Wears close to the skin like candlelight.",
     reviews: [
-      { name: "Raven L.", stars: 5, quote: "Gothic Romance collection is SO perfect. Eternally Embraced is my favorite." },
-      { name: "Kiara M.", stars: 5, quote: "Warm amber vanilla perfection. This smells like candlelight and silk." },
-      { name: "Denise P.", stars: 5, quote: "I'm not usually into perfume oils but THIS?? omg." },
+      { name: "Raven L.", stars: 5, quote: "Eternally Embraced is my favorite from the gothic chapter." },
+      { name: "Kiara M.", stars: 5, quote: "This smells like candlelight and silk." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
     slug: "ashes-of-roses",
@@ -299,11 +302,9 @@ export const SCENTS: Scent[] = [
     },
     texture: "Velvet and shadow. Layers stunningly with Velvet.",
     reviews: [
-      { name: "Celeste R.", stars: 5, quote: "Ashes of Roses?? If you like smoky rose scents you HAVE to try this one." },
-      { name: "Brittany E.", stars: 5, quote: "This smells dark, romantic, and expensive." },
-      { name: "Olivia N.", stars: 4, quote: "Smokier than I expected but really beautiful layered with Velvet." },
+      { name: "Celeste R.", stars: 5, quote: "If you like smoky rose scents you HAVE to try this one." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
     slug: "whispers-at-twilight",
@@ -319,18 +320,17 @@ export const SCENTS: Scent[] = [
     },
     texture: "Soft, dreamy, like fresh skin after a warm shower.",
     reviews: [
-      { name: "Amber J.", stars: 5, quote: "Whispers at Twilight smells dreamy and soft… like nighttime after a warm shower." },
-      { name: "Mia K.", stars: 5, quote: "This one feels calming and sensual at the same time." },
+      { name: "Amber J.", stars: 5, quote: "Whispers at Twilight smells dreamy and soft." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
   },
   {
     slug: "forever-berried",
     name: "Forever Berried",
     collection: "Gothic Romance",
-    tagline: "Juicy, dark, and sexy.",
+    tagline: "Juicy, dark, and sensual.",
     story:
-      "Dark, jeweled berries swirled with vanilla and amber. Lush, sensual, unforgettable.",
+      "Dark, jeweled berries swirled with vanilla liqueur, amber, and a drift of patchouli. Lush, sensual, unforgettable.",
     notes: {
       top: ["Black Currant", "Plum"],
       heart: ["Vanilla Liqueur"],
@@ -339,17 +339,70 @@ export const SCENTS: Scent[] = [
     texture: "Bold and creamy. A statement on the skin.",
     reviews: [
       { name: "Tori D.", stars: 5, quote: "Forever Berried is juicy, dark, and sexy." },
-      { name: "Haley S.", stars: 5, quote: "I usually hate berry scents but this one is DIFFERENT." },
     ],
-    availableIn: { body_oil: true, scrub: true, roll_on: true },
+    availableIn: { body_oil: true, roll_on: true },
+  },
+
+  // ============== HOLIDAY (Future) ==============
+  {
+    slug: "cashmere-glow",
+    name: "Cashmere Glow",
+    collection: "Holiday",
+    tagline: "Comforting and expensive at once.",
+    story:
+      "Soft musk, warm vanilla, and a golden hush of amber — the scent of a cashmere robe and warm bath light. Coming with the Holiday drop.",
+    notes: {
+      top: ["Soft Musk"],
+      heart: ["Vanilla Silk", "Cashmere"],
+      base: ["Golden Amber"],
+    },
+    texture: "Pillowy and weightless, leaving skin glowing without any shimmer.",
+    reviews: [
+      { name: "Nicole A.", stars: 5, quote: "Cashmere Glow smells comforting and expensive at the same time." },
+      { name: "Faith J.", stars: 5, quote: "Soft blankets, warm skin, and a luxury hotel robe." },
+    ],
+    availableIn: { body_oil: true, roll_on: true },
   },
 ];
 
-export const COLLECTIONS_ORDER: Scent["collection"][] = [
-  "Everyday",
+export const CORE_SCENTS = SCENTS.filter((s) => s.collection === "Core");
+
+export const COLLECTIONS_ORDER: CollectionId[] = [
+  "Core",
+  "Endless Summer",
   "Gothic Romance",
-  "Summer (Limited)",
+  "Holiday",
 ];
 
 export const formatPrice = (cents: number) =>
   `$${(cents / 100).toFixed(2).replace(/\.00$/, "")}`;
+
+export const FUTURE_COLLECTIONS = [
+  {
+    id: "endless-summer",
+    name: "Endless Summer",
+    eyebrow: "Coming Soon — Summer Drop",
+    tagline: "Belize sunsets. Ocean horizons. Golden-hour skin.",
+    description:
+      "A future collection of warm tropical scents inspired by Belize beach sunsets and ocean horizons — including discovery sets and explorer kits.",
+    href: "/collections/endless-summer",
+  },
+  {
+    id: "gothic-romance",
+    name: "Gothic Romance",
+    eyebrow: "Coming Soon — Fall Drop",
+    tagline: "Black roses, velvet, moonlight, smoky cathedrals.",
+    description:
+      "A darkly romantic fall collection — Edgar Allan Poe atmosphere, smoky florals, candlelight and shadow.",
+    href: "/collections/gothic-romance",
+  },
+  {
+    id: "holiday",
+    name: "Holiday",
+    eyebrow: "Coming Soon — Winter Drop",
+    tagline: "Fireplace warmth, cashmere intimacy, holiday romance.",
+    description:
+      "A winter ritual of cashmere amber, soft vanilla, and firelit luxury — designed for cold nights and giftable rituals.",
+    href: "/collections/holiday",
+  },
+];
