@@ -5,13 +5,8 @@ import { useCart } from "./CartContext";
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/collections/core", label: "Core" },
-  { to: "/collections/endless-summer", label: "Endless Summer" },
-  { to: "/collections/gothic-romance", label: "Gothic Romance" },
-  { to: "/collections/holiday", label: "Holiday" },
-  { to: "/ritual-guide", label: "Ritual Guide" },
+  { to: "/collections/core", label: "Shop" },
   { to: "/about", label: "About" },
-  { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ];
 
