@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Sparkles, Star } from "lucide-react";
+import { ChevronDown, Sparkles, Star, Wind } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Scent, PRODUCT_TYPES, ProductTypeId, formatPrice } from "./scents";
 import { useCart } from "./CartContext";
@@ -13,7 +13,7 @@ import { toast } from "sonner";
 export const ScentCard = ({ scent }: { scent: Scent }) => {
   const [open, setOpen] = useState(false);
   const [productId, setProductId] = useState<ProductTypeId>(
-    scent.availableIn.body_oil ? "body_oil" : scent.availableIn.scrub ? "scrub" : "roll_on"
+    scent.availableIn.body_oil ? "body_oil" : "roll_on"
   );
   const product = PRODUCT_TYPES[productId];
   const [sizeId, setSizeId] = useState<string>(product.sizes[0].id);
@@ -66,6 +66,16 @@ export const ScentCard = ({ scent }: { scent: Scent }) => {
       {open && (
         <div className="relative px-6 md:px-7 pb-6 space-y-5 animate-fade-up">
           <p className="text-sm text-foreground/80 leading-relaxed">{scent.story}</p>
+
+          {scent.whatItSmellsLike && (
+            <div className="flex gap-3 items-start rounded-2xl bg-background/60 border border-rose-gold/30 px-5 py-4">
+              <Wind className="h-4 w-4 text-rose-gold shrink-0 mt-0.5" />
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-rose-gold">What it smells like</p>
+                <p className="text-sm font-serif italic text-cocoa/90 mt-1 leading-relaxed">{scent.whatItSmellsLike}</p>
+              </div>
+            </div>
+          )}
 
           {/* Notes pyramid */}
           <div className="rounded-2xl bg-cream/60 border border-border/40 px-5 py-4">
