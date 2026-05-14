@@ -77,6 +77,13 @@ export const ScentCard = ({ scent }: { scent: Scent }) => {
             </div>
           )}
 
+          {scent.mood && (
+            <div className="rounded-2xl bg-cocoa/5 border border-cocoa/15 px-5 py-4">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-rose-gold">Mood &amp; Vibe</p>
+              <p className="text-sm font-serif text-cocoa/90 mt-1 leading-relaxed">{scent.mood}</p>
+            </div>
+          )}
+
           {/* Notes pyramid */}
           <div className="rounded-2xl bg-cream/60 border border-border/40 px-5 py-4">
             <p className="text-[10px] uppercase tracking-[0.3em] text-rose-gold mb-3">Fragrance Notes</p>
