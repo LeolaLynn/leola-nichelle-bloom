@@ -19,6 +19,7 @@ export type Scent = {
   tagline: string;
   story: string;
   whatItSmellsLike?: string;
+  mood?: string;
   notes: { top: string[]; heart: string[]; base: string[] };
   texture: string;
   reviews: Review[];
@@ -84,7 +85,8 @@ export const SCENTS: Scent[] = [
     story:
       "Velvet is the scent of being held — powdery vanilla unfurls into golden amber and creamy sandalwood. Warm enough for daytime, intimate enough for the moments after.",
     whatItSmellsLike:
-      "Cashmere on bare skin. Warm vanilla, candlelit amber, and the soft glow of sandalwood drifting close to the body.",
+      "Creamy vanilla wrapped in glowing amber and soft sandalwood warmth.",
+    mood: "Soft plush luxury. Warm skin. Golden comfort. Cozy elegance.",
     notes: {
       top: ["Vanilla"],
       heart: ["Amber"],
@@ -93,7 +95,7 @@ export const SCENTS: Scent[] = [
     texture:
       "Whips into a cloud and melts the second it touches warm skin. Leaves a soft, glowing finish — never sticky, never heavy.",
     reviews: [
-      { name: "Tasha M.", stars: 5, quote: "VELVET smells AMAZING. Soft, creamy, cozy… like expensive vanilla cashmere." },
+      { name: "Tasha M.", stars: 5, quote: "Smells warm, expensive, and comforting without being overpowering." },
       { name: "Danielle R.", stars: 5, quote: "This is one of those scents that makes people hug you longer lol." },
       { name: "Nia C.", stars: 5, quote: "Oooh I love how soft and smooth the texture is. This feels PERFECT." },
       { name: "Shanice W.", stars: 5, quote: "THIS IS THE TEXTURE I'VE BEEN LOOKING FOR — perfectly soft and creamy." },
@@ -108,7 +110,8 @@ export const SCENTS: Scent[] = [
     story:
       "A velvet jacket of a scent — smoky tobacco ebony folded into supple leather and warm amber. Rich, smooth, and unmistakably grown.",
     whatItSmellsLike:
-      "Warm smoky luxury. Tobacco-kissed leather wrapped in golden amber — the hush of a candlelit room and a coat slung over a chair.",
+      "Smooth worn leather softened by smoky amber and dark woods.",
+    mood: "Dark sophistication. Rugged luxury. Mysterious warmth.",
     notes: {
       top: ["Tobacco Ebony"],
       heart: ["Leather"],
@@ -117,7 +120,7 @@ export const SCENTS: Scent[] = [
     texture:
       "Slips on like silk and warms into the skin. Wears close — beautifully personal sillage.",
     reviews: [
-      { name: "Brianna L.", stars: 5, quote: "Suede smells rich and expensive without being overpowering." },
+      { name: "Brianna L.", stars: 5, quote: "Rich, smooth, and addictive. Feels like a luxury jacket at night." },
       { name: "Erica T.", stars: 5, quote: "My husband actually asked what fragrance I was wearing and he NEVER notices stuff like that." },
       { name: "Kelsey N.", stars: 4, quote: "I usually go for sweeter scents but this one surprised me. Very clean luxury vibes." },
     ],
@@ -131,7 +134,8 @@ export const SCENTS: Scent[] = [
     story:
       "Salted ocean mist drifting over worn leather and aged woods — the scent of a stormy coastline, a weathered jacket, and the kind of cool that doesn't try.",
     whatItSmellsLike:
-      "Salt air and dark wood. Worn leather warmed by sun, finished with the cold luxury of a misted shoreline.",
+      "Salty ocean air drifting through weathered wood and soft leather.",
+    mood: "Dangerous coastal luxury. Rebellious. Cool. Atmospheric.",
     notes: {
       top: ["Ocean Mist"],
       heart: ["Worn Leather"],
@@ -140,7 +144,7 @@ export const SCENTS: Scent[] = [
     texture:
       "Lightweight and airy — perfect for warmer temps. Never sticky, never overwhelming.",
     reviews: [
-      { name: "Vanessa G.", stars: 5, quote: "Skullz On The Beach is my FOREVER buy." },
+      { name: "Vanessa G.", stars: 5, quote: "Like a stormy beach bonfire with expensive cologne in the air." },
       { name: "Monique D.", stars: 5, quote: "This smells like warm skin, salty air, and somebody fine walking past you 😂" },
       { name: "Ashley P.", stars: 5, quote: "I love that it's lightweight for warmer temps. Doesn't feel sticky at ALL." },
       { name: "Renee H.", stars: 5, quote: "Definitely unisex in the best way." },
@@ -155,7 +159,8 @@ export const SCENTS: Scent[] = [
     story:
       "Salted caramel poured slowly over wood-kissed cocoa — a slow, edible indulgence. The dessert version of self-care, dressed in warm woods.",
     whatItSmellsLike:
-      "Melted caramel and dark chocolate folded into warm espresso wood — rich, addictive, edible without being childish.",
+      "Dark cocoa and melted caramel wrapped in warm sensual woods.",
+    mood: "Edible luxury. Rich indulgence. Slow evenings. Sensual warmth.",
     notes: {
       top: ["Salted Caramel"],
       heart: ["Wood-Kissed Cocoa"],
@@ -164,7 +169,7 @@ export const SCENTS: Scent[] = [
     texture:
       "Rich, buttery whip that melts into a long-wearing gourmand glow.",
     reviews: [
-      { name: "Jasmine B.", stars: 5, quote: "My favorite is Decadence. I've been looking for a caramel scent and THIS is THE one." },
+      { name: "Jasmine B.", stars: 5, quote: "Smells delicious without smelling childish or sugary." },
       { name: "Lori S.", stars: 5, quote: "Smells like warm gooey caramel and melted chocolate. Literally addictive." },
       { name: "Melissa K.", stars: 4, quote: "Very sweet and rich. A little goes a long way for me personally." },
     ],
@@ -178,7 +183,8 @@ export const SCENTS: Scent[] = [
     story:
       "A calming evening fragrance built around chamomile, warm vanilla, soft amber, and a quiet trace of honeysuckle drifting through nighttime air. Hush is the scent of slowing down.",
     whatItSmellsLike:
-      "Creamy vanilla warmth, golden amber softness, delicate chamomile, and a gentle trace of honeysuckle drifting through warm nighttime air.",
+      "Soft floral warmth blended with creamy vanilla and calming amber.",
+    mood: "Nighttime comfort. Emotional softness. Warm candlelight. Relaxed luxury.",
     notes: {
       top: ["Chamomile", "Honeysuckle"],
       heart: ["Warm Vanilla"],
@@ -187,7 +193,7 @@ export const SCENTS: Scent[] = [
     texture:
       "Pillowy whip that melts into a warm, weightless glow — designed for nighttime rituals and quiet rooms.",
     reviews: [
-      { name: "Amaya T.", stars: 5, quote: "Hush is the most calming scent I own. I sleep better wearing it, no joke." },
+      { name: "Amaya T.", stars: 5, quote: "Feels like being wrapped in a warm blanket before bed." },
       { name: "Sienna B.", stars: 5, quote: "Soft, golden, comforting — like being wrapped in a warm blanket." },
     ],
     availableIn: { body_oil: true, roll_on: true },
