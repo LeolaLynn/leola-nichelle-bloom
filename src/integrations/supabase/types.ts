@@ -14,6 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
+      admin_alerts: {
+        Row: {
+          body: string | null
+          created_at: string
+          id: string
+          metadata: Json | null
+          order_id: string | null
+          read_at: string | null
+          title: string
+          type: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          order_id?: string | null
+          read_at?: string | null
+          title: string
+          type: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          metadata?: Json | null
+          order_id?: string | null
+          read_at?: string | null
+          title?: string
+          type?: string
+        }
+        Relationships: []
+      }
+      email_campaigns: {
+        Row: {
+          approved_at: string | null
+          approved_by: string | null
+          body_html: string
+          body_text: string | null
+          campaign_type: string
+          created_at: string
+          created_by: string | null
+          id: string
+          mailerlite_campaign_id: string | null
+          mailerlite_group: string | null
+          name: string
+          preheader: string | null
+          scheduled_at: string | null
+          send_error: string | null
+          sent_at: string | null
+          status: string
+          subject: string
+          updated_at: string
+        }
+        Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
+          body_html?: string
+          body_text?: string | null
+          campaign_type?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          mailerlite_campaign_id?: string | null
+          mailerlite_group?: string | null
+          name: string
+          preheader?: string | null
+          scheduled_at?: string | null
+          send_error?: string | null
+          sent_at?: string | null
+          status?: string
+          subject: string
+          updated_at?: string
+        }
+        Update: {
+          approved_at?: string | null
+          approved_by?: string | null
+          body_html?: string
+          body_text?: string | null
+          campaign_type?: string
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          mailerlite_campaign_id?: string | null
+          mailerlite_group?: string | null
+          name?: string
+          preheader?: string | null
+          scheduled_at?: string | null
+          send_error?: string | null
+          sent_at?: string | null
+          status?: string
+          subject?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       email_send_log: {
         Row: {
           created_at: string
@@ -147,12 +243,14 @@ export type Database = {
       }
       orders: {
         Row: {
+          admin_notes: string | null
           created_at: string
           currency: string
           customer_email: string | null
           customer_name: string | null
           discount_cents: number
           environment: string
+          fulfilled_at: string | null
           id: string
           shipping_address: Json | null
           shipping_cents: number
@@ -161,14 +259,19 @@ export type Database = {
           subtotal_cents: number
           tax_cents: number
           total_cents: number
+          tracking_carrier: string | null
+          tracking_number: string | null
+          tracking_url: string | null
         }
         Insert: {
+          admin_notes?: string | null
           created_at?: string
           currency?: string
           customer_email?: string | null
           customer_name?: string | null
           discount_cents?: number
           environment?: string
+          fulfilled_at?: string | null
           id?: string
           shipping_address?: Json | null
           shipping_cents?: number
@@ -177,14 +280,19 @@ export type Database = {
           subtotal_cents?: number
           tax_cents?: number
           total_cents?: number
+          tracking_carrier?: string | null
+          tracking_number?: string | null
+          tracking_url?: string | null
         }
         Update: {
+          admin_notes?: string | null
           created_at?: string
           currency?: string
           customer_email?: string | null
           customer_name?: string | null
           discount_cents?: number
           environment?: string
+          fulfilled_at?: string | null
           id?: string
           shipping_address?: Json | null
           shipping_cents?: number
@@ -193,6 +301,9 @@ export type Database = {
           subtotal_cents?: number
           tax_cents?: number
           total_cents?: number
+          tracking_carrier?: string | null
+          tracking_number?: string | null
+          tracking_url?: string | null
         }
         Relationships: []
       }
@@ -220,11 +331,33 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      claim_owner_role: { Args: never; Returns: boolean }
       delete_email: {
         Args: { message_id: number; queue_name: string }
         Returns: boolean
@@ -233,6 +366,14 @@ export type Database = {
         Args: { payload: Json; queue_name: string }
         Returns: number
       }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
+      is_admin: { Args: { _user_id: string }; Returns: boolean }
       move_to_dlq: {
         Args: {
           dlq_name: string
@@ -252,7 +393,7 @@ export type Database = {
       }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "owner" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -379,6 +520,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["owner", "admin"],
+    },
   },
 } as const

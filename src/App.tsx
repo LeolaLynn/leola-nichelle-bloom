@@ -17,6 +17,13 @@ import FaqPage from "./pages/leola/FaqPage";
 import ContactPage from "./pages/leola/ContactPage";
 import { CartProvider } from "@/components/leola/CartContext";
 import { RootLayout } from "@/components/leola/RootLayout";
+import Unsubscribe from "./pages/Unsubscribe";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminOrders from "./pages/admin/AdminOrders";
+import AdminCampaigns from "./pages/admin/AdminCampaigns";
+import AdminCalendar from "./pages/admin/AdminCalendar";
 
 const queryClient = new QueryClient();
 
@@ -40,8 +47,16 @@ const App = () => (
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/order/success" element={<OrderSuccess />} />
               <Route path="/order/cancel" element={<OrderCancel />} />
-              <Route path="*" element={<NotFound />} />
             </Route>
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="orders" element={<AdminOrders />} />
+              <Route path="campaigns" element={<AdminCampaigns />} />
+              <Route path="calendar" element={<AdminCalendar />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </CartProvider>
