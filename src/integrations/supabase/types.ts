@@ -243,12 +243,14 @@ export type Database = {
       }
       orders: {
         Row: {
+          admin_notes: string | null
           created_at: string
           currency: string
           customer_email: string | null
           customer_name: string | null
           discount_cents: number
           environment: string
+          fulfilled_at: string | null
           id: string
           shipping_address: Json | null
           shipping_cents: number
@@ -257,14 +259,19 @@ export type Database = {
           subtotal_cents: number
           tax_cents: number
           total_cents: number
+          tracking_carrier: string | null
+          tracking_number: string | null
+          tracking_url: string | null
         }
         Insert: {
+          admin_notes?: string | null
           created_at?: string
           currency?: string
           customer_email?: string | null
           customer_name?: string | null
           discount_cents?: number
           environment?: string
+          fulfilled_at?: string | null
           id?: string
           shipping_address?: Json | null
           shipping_cents?: number
@@ -273,14 +280,19 @@ export type Database = {
           subtotal_cents?: number
           tax_cents?: number
           total_cents?: number
+          tracking_carrier?: string | null
+          tracking_number?: string | null
+          tracking_url?: string | null
         }
         Update: {
+          admin_notes?: string | null
           created_at?: string
           currency?: string
           customer_email?: string | null
           customer_name?: string | null
           discount_cents?: number
           environment?: string
+          fulfilled_at?: string | null
           id?: string
           shipping_address?: Json | null
           shipping_cents?: number
@@ -289,6 +301,9 @@ export type Database = {
           subtotal_cents?: number
           tax_cents?: number
           total_cents?: number
+          tracking_carrier?: string | null
+          tracking_number?: string | null
+          tracking_url?: string | null
         }
         Relationships: []
       }
