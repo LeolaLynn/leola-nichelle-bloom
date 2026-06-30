@@ -19,6 +19,16 @@ interface OwnerAlertProps {
   total_cents?: number
   currency?: string
   itemSummary?: string
+  shippingMethod?: string
+  shippingAddress?: {
+    line1?: string
+    line2?: string
+    city?: string
+    state?: string
+    postal_code?: string
+    country?: string
+  } | null
+  placedAt?: string
 }
 
 const money = (cents = 0, currency = 'usd') =>
@@ -34,6 +44,9 @@ export const OwnerPurchaseAlertEmail: React.FC<OwnerAlertProps> = ({
   total_cents = 0,
   currency = 'usd',
   itemSummary = '',
+  shippingMethod = '',
+  shippingAddress = null,
+  placedAt = '',
 }) => (
   <Html>
     <Head />
@@ -49,7 +62,18 @@ export const OwnerPurchaseAlertEmail: React.FC<OwnerAlertProps> = ({
         <Section>
           <Text style={{ margin: '12px 0 4px', fontSize: 14 }}><strong>Order:</strong> #{orderNumber.slice(0, 8).toUpperCase()}</Text>
           <Text style={{ margin: '0 0 4px', fontSize: 14 }}><strong>Customer:</strong> {customerName}{customerEmail ? ` (${customerEmail})` : ''}</Text>
+          {placedAt && <Text style={{ margin: '0 0 4px', fontSize: 14 }}><strong>Placed:</strong> {placedAt}</Text>}
           <Text style={{ margin: '0 0 4px', fontSize: 14 }}><strong>Total:</strong> {money(total_cents, currency)}</Text>
+          {shippingMethod && <Text style={{ margin: '0 0 4px', fontSize: 14 }}><strong>Shipping:</strong> {shippingMethod}</Text>}
+          {shippingAddress && (
+            <Text style={{ margin: '8px 0 0', fontSize: 14, whiteSpace: 'pre-line' }}>
+              <strong>Ship to:</strong>{'\n'}
+              {[shippingAddress.line1, shippingAddress.line2].filter(Boolean).join('\n')}
+              {(shippingAddress.line1 || shippingAddress.line2) ? '\n' : ''}
+              {[shippingAddress.city, shippingAddress.state, shippingAddress.postal_code].filter(Boolean).join(', ')}
+              {shippingAddress.country ? `\n${shippingAddress.country}` : ''}
+            </Text>
+          )}
           {itemSummary && <Text style={{ margin: '8px 0 0', fontSize: 14, whiteSpace: 'pre-line' }}>{itemSummary}</Text>}
         </Section>
         <Hr style={{ borderColor: '#e8d9c4', margin: '24px 0 16px' }} />
@@ -74,5 +98,8 @@ export const template = {
     total_cents: 6800,
     currency: 'usd',
     itemSummary: '• Luxury Body Oil Soufflé — Velvet (4 oz) × 1\n• Perfume Oil Roller — Hush (10 ml) × 1',
+    shippingMethod: 'Standard Shipping',
+    shippingAddress: { line1: '123 Cocoa Ln', city: 'Atlanta', state: 'GA', postal_code: '30301', country: 'US' },
+    placedAt: new Date().toLocaleString('en-US'),
   },
 } satisfies TemplateEntry

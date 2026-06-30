@@ -62,6 +62,13 @@ async function handleSessionCompleted(session: any, env: StripeEnv) {
     .map((i: any) => `• ${i.n}${i.s ? ` — ${i.s}` : ""}${i.z ? ` (${i.z})` : ""} × ${i.q}`)
     .join("\n");
 
+  // Shipping method label (Stripe shipping option display name, if any)
+  const shippingMethod =
+    (full as any).shipping_cost?.shipping_rate
+      ? (full as any).shipping_options?.[0]?.shipping_rate_data?.display_name ||
+        "Standard Shipping"
+      : full.shipping_cost?.amount_total ? "Standard Shipping" : "";
+
   // In-dashboard owner alert
   await supabase.from("admin_alerts").insert({
     type: "purchase",
@@ -72,6 +79,14 @@ async function handleSessionCompleted(session: any, env: StripeEnv) {
       total_cents: full.amount_total,
       currency: full.currency,
       customer_email: full.customer_details?.email,
+      customer_name: full.customer_details?.name,
+      order_number: order.id,
+      placed_at: new Date().toISOString(),
+      shipping_method: shippingMethod,
+      shipping_address: full.customer_details?.address || null,
+      items: parsedItems.map((i: any) => ({
+        name: i.n, scent: i.s || null, size: i.z || null, qty: i.q, price_cents: i.p,
+      })),
     },
   });
 
@@ -114,6 +129,9 @@ async function handleSessionCompleted(session: any, env: StripeEnv) {
     total_cents: totals.total_cents,
     currency: totals.currency,
     itemSummary,
+    shippingMethod,
+    shippingAddress: full.customer_details?.address || null,
+    placedAt: new Date().toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" }),
   });
 
   // Customer confirmation

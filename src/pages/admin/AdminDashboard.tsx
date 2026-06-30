@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
 interface Alert {
@@ -9,12 +9,34 @@ interface Alert {
 export default function AdminDashboard() {
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [stats, setStats] = useState({ today: 0, week: 0, revenue: 0 });
+  const [notifPerm, setNotifPerm] = useState<NotificationPermission | "unsupported">(
+    typeof Notification === "undefined" ? "unsupported" : Notification.permission
+  );
+  const seenIds = useRef<Set<string>>(new Set());
+  const firstLoad = useRef(true);
 
   const load = async () => {
     const { data } = await supabase
       .from("admin_alerts").select("*")
       .order("created_at", { ascending: false }).limit(30);
-    setAlerts((data as Alert[]) || []);
+    const list = (data as Alert[]) || [];
+    // Browser notification for any new purchase alert seen since last load
+    if (!firstLoad.current && typeof Notification !== "undefined" && Notification.permission === "granted") {
+      for (const a of list) {
+        if (!seenIds.current.has(a.id) && a.type === "purchase") {
+          try {
+            new Notification(a.title, {
+              body: a.body || "New order received",
+              icon: "/favicon.ico",
+              tag: a.id,
+            });
+          } catch {}
+        }
+      }
+    }
+    list.forEach((a) => seenIds.current.add(a.id));
+    firstLoad.current = false;
+    setAlerts(list);
 
     const since = new Date(); since.setDate(since.getDate() - 7);
     const { data: orders } = await supabase
@@ -48,6 +70,18 @@ export default function AdminDashboard() {
 
   const money = (c: number) => `$${(c / 100).toFixed(2)}`;
 
+  const enableNotifications = async () => {
+    if (typeof Notification === "undefined") return;
+    const p = await Notification.requestPermission();
+    setNotifPerm(p);
+  };
+
+  const fmtAddr = (a: any) => {
+    if (!a) return "";
+    return [a.line1, a.line2, [a.city, a.state, a.postal_code].filter(Boolean).join(", "), a.country]
+      .filter(Boolean).join(" · ");
+  };
+
   return (
     <div>
       <header style={H.head}>
@@ -64,7 +98,14 @@ export default function AdminDashboard() {
       <section style={H.card}>
         <div style={H.cardHead}>
           <h2 style={H.h2}>Alerts</h2>
-          <button style={H.linkBtn} onClick={markAllRead}>Mark all read</button>
+          <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
+            {notifPerm !== "granted" && notifPerm !== "unsupported" && (
+              <button style={H.linkBtn} onClick={enableNotifications}>
+                Enable browser alerts
+              </button>
+            )}
+            <button style={H.linkBtn} onClick={markAllRead}>Mark all read</button>
+          </div>
         </div>
         {alerts.length === 0 && <p style={H.empty}>No alerts yet.</p>}
         <ul style={H.list}>
@@ -73,6 +114,31 @@ export default function AdminDashboard() {
               <div>
                 <div style={H.itemTitle}>{a.title}</div>
                 {a.body && <div style={H.itemBody}>{a.body}</div>}
+                {a.metadata && a.type === "purchase" && (
+                  <div style={H.itemMetaBlock}>
+                    {a.metadata.customer_name && (
+                      <div><strong>Customer:</strong> {a.metadata.customer_name}
+                      {a.metadata.customer_email ? ` (${a.metadata.customer_email})` : ""}</div>
+                    )}
+                    {a.metadata.order_number && (
+                      <div><strong>Order #</strong> {String(a.metadata.order_number).slice(0,8).toUpperCase()}</div>
+                    )}
+                    {Array.isArray(a.metadata.items) && a.metadata.items.length > 0 && (
+                      <div><strong>Items:</strong> {a.metadata.items.map((i: any) =>
+                        `${i.name}${i.scent ? ` — ${i.scent}` : ""}${i.size ? ` (${i.size})` : ""} × ${i.qty}`
+                      ).join("; ")}</div>
+                    )}
+                    {typeof a.metadata.total_cents === "number" && (
+                      <div><strong>Total:</strong> {money(a.metadata.total_cents)} {(a.metadata.currency||"usd").toUpperCase()}</div>
+                    )}
+                    {a.metadata.shipping_method && (
+                      <div><strong>Shipping:</strong> {a.metadata.shipping_method}</div>
+                    )}
+                    {a.metadata.shipping_address && (
+                      <div><strong>Ship to:</strong> {fmtAddr(a.metadata.shipping_address)}</div>
+                    )}
+                  </div>
+                )}
                 <div style={H.itemMeta}>{new Date(a.created_at).toLocaleString()}</div>
               </div>
               {!a.read_at && (
@@ -119,4 +185,6 @@ const H: Record<string, React.CSSProperties> = {
   itemMeta: { fontSize: 12, color: "#8a6a4c", marginTop: 4 },
   linkBtn: { background: "none", border: "none", color: "#8a6a4c",
     cursor: "pointer", textDecoration: "underline", fontSize: 13 },
+  itemMetaBlock: { marginTop: 8, fontSize: 13, color: "#5a4434", lineHeight: 1.55,
+    display: "grid", gap: 2 },
 };
