@@ -185,4 +185,6 @@ const H: Record<string, React.CSSProperties> = {
   itemMeta: { fontSize: 12, color: "#8a6a4c", marginTop: 4 },
   linkBtn: { background: "none", border: "none", color: "#8a6a4c",
     cursor: "pointer", textDecoration: "underline", fontSize: 13 },
+  itemMetaBlock: { marginTop: 8, fontSize: 13, color: "#5a4434", lineHeight: 1.55,
+    display: "grid", gap: 2 },
 };
