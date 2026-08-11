@@ -2,6 +2,20 @@ import { Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { FUTURE_COLLECTIONS } from "./scents";
 
+// Future products — add pricing/sizes here once finalized.
+const COMING_SOON_PRODUCTS = [
+  {
+    name: "Perfumed Body Oil",
+    blurb:
+      "A silky liquid body oil layered with our house fragrances. Sizes and pricing to be announced.",
+  },
+  {
+    name: "New Seasonal Scents",
+    blurb:
+      "Fresh chapters of the scent library, released alongside each collection drop.",
+  },
+];
+
 export const ComingSoon = () => (
   <section id="coming-soon" className="py-20 md:py-28">
     <div className="container max-w-4xl text-center">
