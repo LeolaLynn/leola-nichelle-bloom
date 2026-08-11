@@ -12,9 +12,10 @@ const AboutPage = () => (
         designed to feel like a memory — warm, intimate, and unmistakably yours.
       </p>
       <p>
-        Our signature is the <strong>Mango + Kokum Whipped Body Butter</strong>: a marshmallow-soft
-        whipped oil that melts into skin with a silky, non-greasy finish. It's the
-        ritual we built the house around.
+        Our signature is the <strong>Mango + Kokum Whipped Body Butter</strong>: a water-free,
+        marshmallow-soft whip of mango and kokum butters with meadowfoam, jojoba and
+        squalane, smoothing on silky and leaving skin soft, conditioned, and scented.
+        It's the ritual we built the house around.
       </p>
       <p>
         Our scents live in four chapters — the Core Collection (available now), and three

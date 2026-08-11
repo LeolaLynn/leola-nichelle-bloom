@@ -5,10 +5,10 @@ import jar from "@/assets/whipped-body-butter-jar.jpg";
 
 const FEATURED = [
   {
-    id: "body_oil" as const,
+    id: "body_butter" as const,
     eyebrow: "Signature Ritual",
     blurb:
-      "A marshmallow-soft whipped oil that melts into skin with a silky, candlelit finish.",
+      "Mango and kokum butters whipped marshmallow-soft, with meadowfoam, jojoba and squalane for a silky, conditioned finish.",
   },
   {
     id: "roll_on" as const,
