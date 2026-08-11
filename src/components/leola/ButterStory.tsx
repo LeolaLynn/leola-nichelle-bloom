@@ -1,36 +1,51 @@
 // =====================================================================
-// LEOLA NICHELLE — "What Makes Our Soufflé Different?" educational block
+// LEOLA NICHELLE — "Inside the Whip" educational block
 // Displayed below the product showcase on the homepage. To edit copy,
-// change the strings in BENEFITS or the intro paragraph below.
+// change the strings in BENEFITS, INGREDIENTS or the intro paragraph.
 // =====================================================================
 
 const BENEFITS = [
-  { icon: "✨", title: "Water-Free Formula",          blurb: "Pure botanical richness — no water filler." },
-  { icon: "☁️", title: "Marshmallow-Soft Texture",   blurb: "Whipped airy, scooped soft, melted silky." },
-  { icon: "🌿", title: "Lightweight Botanical Oils",  blurb: "Skin-loving oils chosen for a clean glide." },
-  { icon: "💛", title: "Melts Beautifully Into Skin", blurb: "Transforms from cloud to oil on contact." },
-  { icon: "💧", title: "Soft & Radiant Finish",       blurb: "Leaves skin dewy, never greasy." },
-  { icon: "🌸", title: "Long-Lasting Luxury Scent",   blurb: "A whisper of fragrance that lingers." },
-  { icon: "👜", title: "A Little Goes a Long Way",     blurb: "One scoop is a full-body ritual." },
+  { icon: "✨", title: "Water-Free Formula",            blurb: "Anhydrous and butter-rich — no water filler." },
+  { icon: "🥭", title: "Mango + Kokum Base",            blurb: "A rich butter base that still feels elegant." },
+  { icon: "☁️", title: "Marshmallow-Soft Whip",         blurb: "Whipped airy, scooped soft, smoothed silky." },
+  { icon: "🌿", title: "Slip From Botanical Oils",      blurb: "Meadowfoam, jojoba, safflower and MCT for glide." },
+  { icon: "💧", title: "Squalane Softness",             blurb: "Leaves skin conditioned and comfortable." },
+  { icon: "🌸", title: "Long-Lasting Luxury Scent",     blurb: "A whisper of fragrance that lingers." },
+  { icon: "👜", title: "A Little Goes a Long Way",      blurb: "One scoop is a full-body ritual." },
 ];
 
-export const SouffleEducation = () => (
-  <section id="souffle-story" className="py-20 md:py-28 bg-cream/50">
+const INGREDIENTS = [
+  "Mango Butter",
+  "Kokum Butter",
+  "MCT / Fractionated Coconut Oil",
+  "High-Oleic Safflower Oil",
+  "Meadowfoam Seed Oil",
+  "Jojoba Oil",
+  "Squalane",
+  "Cetyl Alcohol",
+  "Arrowroot Powder",
+  "Vitamin E",
+  "Fragrance / Parfum (varies by scent)",
+];
+
+export const ButterStory = () => (
+  <section id="butter-story" className="py-20 md:py-28 bg-cream/50">
     <div className="container max-w-5xl">
       <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
         <span className="text-xs uppercase tracking-[0.4em] text-rose-gold">
-          The Soufflé Story
+          Inside the Whip
         </span>
         <h2 className="font-serif text-4xl md:text-5xl text-primary mt-3 leading-tight">
-          What Makes Our Soufflé Different?
+          What Makes Our Whipped Body Butter Different?
         </h2>
         <p className="mt-6 text-base md:text-lg text-foreground/75 leading-relaxed font-light italic">
-          Unlike traditional lotions, our Luxury Body Oil Soufflé isn't built
-          around water. Instead, it's made from a carefully selected blend of
-          botanical oils, skin-conditioning ingredients, and luxurious
-          fragrance — all whipped into an airy, marshmallow-soft texture. As
-          it touches your skin, the soufflé melts into a silky oil that leaves
-          your skin feeling soft, radiant, and beautifully scented.
+          Unlike traditional lotions, our Mango + Kokum Whipped Body Butter
+          isn't built around water. Mango and kokum butters create a rich yet
+          elegant base, while meadowfoam, jojoba, squalane, high-oleic
+          safflower and MCT coconut oil bring the slip and softness. Everything
+          is whipped into an airy, marshmallow-soft texture that smooths over
+          skin and leaves it feeling soft, conditioned, and beautifully
+          fragranced.
         </p>
       </div>
 
@@ -56,6 +71,15 @@ export const SouffleEducation = () => (
           </li>
         ))}
       </ul>
+
+      <div className="mt-12 md:mt-16 rounded-3xl bg-card/70 border border-border/60 shadow-soft px-6 md:px-10 py-8 text-center">
+        <span className="text-[10px] uppercase tracking-[0.4em] text-rose-gold">
+          What's Inside
+        </span>
+        <p className="mt-4 text-sm md:text-base text-foreground/75 leading-relaxed">
+          {INGREDIENTS.join(" · ")}
+        </p>
+      </div>
     </div>
   </section>
 );

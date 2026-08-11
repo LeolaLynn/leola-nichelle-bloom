@@ -2,7 +2,7 @@ import { HandHeart, Cloud, Droplet, Flower2, Sparkles } from "lucide-react";
 
 const features = [
   { icon: HandHeart, title: "Handmade in small batches" },
-  { icon: Cloud, title: "Soft whipped oil texture" },
+  { icon: Cloud, title: "Marshmallow-soft whipped butter" },
   { icon: Droplet, title: "Non-greasy finish" },
   { icon: Flower2, title: "Long-lasting scent" },
   { icon: Sparkles, title: "Designed for comfort and luxury" },

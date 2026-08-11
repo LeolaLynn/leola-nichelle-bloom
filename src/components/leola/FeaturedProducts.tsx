@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { PRODUCT_TYPES, formatPrice } from "./scents";
-import jar from "@/assets/cloud-whip-jar.jpg";
+import jar from "@/assets/whipped-body-butter-jar.jpg";
 
 const FEATURED = [
   {
