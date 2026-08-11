@@ -1,7 +1,7 @@
 import { Cloud, Droplet, Flower2, Sparkles } from "lucide-react";
 
 const points = [
-  { icon: Cloud, title: "Whipped marshmallow texture", body: "Soft cream that melts on contact." },
+  { icon: Cloud, title: "Whipped marshmallow texture", body: "Butter-soft whip that smooths in on contact." },
   { icon: Droplet, title: "Silky, non-greasy finish", body: "Drinks into skin without residue." },
   { icon: Flower2, title: "Long-lasting fragrance", body: "Editorial scent that lingers softly through the day." },
   { icon: Sparkles, title: "Soft luxury moisturizing glow", body: "A quiet, candlelit shine — never shimmer." },
@@ -15,11 +15,11 @@ export const RitualSection = () => {
         <div className="text-center mb-14">
           <span className="text-xs uppercase tracking-[0.4em] text-rose-gold">The Ritual</span>
           <h2 className="font-serif text-4xl md:text-5xl text-primary mt-3 text-balance">
-            From whipped cream to silken oil.
+            Whipped butter, silken skin.
           </h2>
           <p className="mt-5 font-serif italic text-xl text-cocoa/80 text-balance max-w-2xl mx-auto">
-            Scoop a small dollop. The Mango + Kokum Whipped Body Butter melts the second it meets warm skin —
-            transforming from a marshmallow-soft cream into a silky, dry-touch oil.
+            Scoop a small dollop. The Mango + Kokum Whipped Body Butter softens the second it meets warm skin —
+            smoothing from a marshmallow-soft whip into a silky, conditioned finish.
           </p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

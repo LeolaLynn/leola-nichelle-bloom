@@ -2,13 +2,13 @@ import { PageShell } from "@/components/leola/PageShell";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const FAQS = [
-  { q: "What is Mango + Kokum Whipped Body Butter?", a: "A marshmallow-soft whipped oil that melts into skin with a silky, non-greasy finish. It transforms from a whipped cream texture into a dry-touch oil on contact with warm skin." },
+  { q: "What is Mango + Kokum Whipped Body Butter?", a: "A water-free whipped body butter built on mango and kokum butters, with meadowfoam, jojoba, squalane, high-oleic safflower and MCT coconut oil for slip. It's marshmallow-soft in the jar and smooths into a silky, conditioned finish on warm skin." },
   { q: "How long does the scent last?", a: "Layered with the matching Roll-On Perfume Oil, scent typically lasts 6–10 hours on warm skin. Apply on damp skin for the longest wear." },
   { q: "Are your products handmade?", a: "Yes. Every batch is hand-poured in small batches in our studio. Nothing leaves until it meets our standards." },
   { q: "Do you ship internationally?", a: "Currently U.S. shipping only. Join the Ritual List to be notified when international shipping opens." },
   { q: "What's your return policy?", a: "Unopened products may be returned within 14 days of delivery. Used products are final sale due to the nature of skincare." },
   { q: "When do future collections drop?", a: "Endless Summer is planned for the next summer drop, Gothic Romance for fall, and Holiday for winter. Join each waitlist for early access." },
-  { q: "Is the Mango + Kokum Whipped Body Butter safe for sensitive skin?", a: "Our formulas are designed to be gentle. We recommend a patch test for very sensitive skin." },
+  { q: "Is the Whipped Body Butter gentle on skin?", a: "Our formulas are designed to be gentle. We recommend a patch test for very sensitive skin." },
 ];
 
 const FaqPage = () => (

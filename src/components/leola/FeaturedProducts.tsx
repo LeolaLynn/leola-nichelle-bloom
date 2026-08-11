@@ -44,7 +44,7 @@ export const FeaturedProducts = () => {
                   <div className="absolute inset-0 gradient-warm opacity-70" />
                   <img
                     src={jar}
-                    alt={`${p.label} on champagne satin`}
+                    alt={`${p.label} jar on champagne satin`}
                     className="relative h-full w-full object-cover mix-blend-multiply"
                   />
                 </div>

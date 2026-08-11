@@ -93,7 +93,7 @@ export const SCENTS: Scent[] = [
       base: ["Sandalwood"],
     },
     texture:
-      "Whips into a cloud and melts the second it touches warm skin. Leaves a soft, glowing finish — never sticky, never heavy.",
+      "Whipped marshmallow-soft and smooths in the second it touches warm skin. Leaves a soft, glowing finish — never sticky, never heavy.",
     reviews: [
       { name: "Tasha M.", stars: 5, quote: "Smells warm, expensive, and comforting without being overpowering." },
       { name: "Danielle R.", stars: 5, quote: "This is one of those scents that makes people hug you longer lol." },
@@ -118,7 +118,7 @@ export const SCENTS: Scent[] = [
       base: ["Amber"],
     },
     texture:
-      "Slips on like silk and warms into the skin. Wears close — beautifully personal sillage.",
+      "Smooths on like silk and warms into the skin. Wears close — beautifully personal sillage.",
     reviews: [
       { name: "Brianna L.", stars: 5, quote: "Rich, smooth, and addictive. Feels like a luxury jacket at night." },
       { name: "Erica T.", stars: 5, quote: "My husband actually asked what fragrance I was wearing and he NEVER notices stuff like that." },
@@ -142,7 +142,7 @@ export const SCENTS: Scent[] = [
       base: ["Aged Woods"],
     },
     texture:
-      "Lightweight and airy — perfect for warmer temps. Never sticky, never overwhelming.",
+      "Airy whip with an easy, weightless finish. Never sticky, never overwhelming.",
     reviews: [
       { name: "Vanessa G.", stars: 5, quote: "Like a stormy beach bonfire with expensive cologne in the air." },
       { name: "Monique D.", stars: 5, quote: "This smells like warm skin, salty air, and somebody fine walking past you 😂" },
@@ -167,7 +167,7 @@ export const SCENTS: Scent[] = [
       base: ["Smooth Woods"],
     },
     texture:
-      "Rich, buttery whip that melts into a long-wearing gourmand glow.",
+      "Rich, buttery whip that smooths into a long-wearing gourmand glow.",
     reviews: [
       { name: "Jasmine B.", stars: 5, quote: "Smells delicious without smelling childish or sugary." },
       { name: "Lori S.", stars: 5, quote: "Smells like warm gooey caramel and melted chocolate. Literally addictive." },
@@ -191,7 +191,7 @@ export const SCENTS: Scent[] = [
       base: ["Soft Amber"],
     },
     texture:
-      "Pillowy whip that melts into a warm, weightless glow — designed for nighttime rituals and quiet rooms.",
+      "Pillowy whip that smooths into a warm, weightless glow — designed for nighttime rituals and quiet rooms.",
     reviews: [
       { name: "Amaya T.", stars: 5, quote: "Feels like being wrapped in a warm blanket before bed." },
       { name: "Sienna B.", stars: 5, quote: "Soft, golden, comforting — like being wrapped in a warm blanket." },
