@@ -29,18 +29,18 @@ export type Scent = {
 // =====================================================================
 // PRODUCT TYPES
 // =====================================================================
-export type ProductTypeId = "body_oil" | "roll_on";
+export type ProductTypeId = "body_butter" | "roll_on";
 export type SizeOption = { id: string; label: string; priceCents: number };
 
 export const PRODUCT_TYPES: Record<
   ProductTypeId,
   { id: ProductTypeId; label: string; description: string; sizes: SizeOption[] }
 > = {
-  body_oil: {
-    id: "body_oil",
-    label: "Luxury Body Oil Soufflé",
+  body_butter: {
+    id: "body_butter",
+    label: "Mango + Kokum Whipped Body Butter",
     description:
-      "A marshmallow-soft whipped oil that melts into skin with a silky, non-greasy finish.",
+      "A water-free whipped body butter of mango and kokum butters, blended with meadowfoam, jojoba, squalane, safflower and MCT for an airy, marshmallow-soft feel that leaves skin soft, conditioned and beautifully scented.",
     sizes: [
       { id: "4oz", label: "4 oz", priceCents: 1400 },
       { id: "8oz", label: "8 oz", priceCents: 2400 },
