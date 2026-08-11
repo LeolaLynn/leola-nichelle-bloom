@@ -3,7 +3,7 @@ import { bundleDiscountPercent } from "./scents";
 
 export type CartItem = {
   id: string;             // unique key per product+scent+size
-  productId: string;      // body_oil | scrub | roll_on
+  productId: string;      // body_butter or roll_on
   productName: string;    // e.g. "Mango + Kokum Whipped Body Butter"
   scent: string;
   collection: string;
