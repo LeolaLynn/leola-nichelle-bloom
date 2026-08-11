@@ -201,6 +201,27 @@ export const SCENTS: Scent[] = [
 
   // ============== ENDLESS SUMMER (Future) ==============
   {
+    slug: "golden-fizz",
+    name: "Golden Fizz",
+    collection: "Core",
+    tagline: "Sparkling citrus. Golden bubbles. Soft vanilla warmth.",
+    story:
+      "Golden Fizz opens with a burst of sparkling tangerine, bright and juicy like sunlight caught in a glass. A bubbly champagne accord keeps it lively and celebratory before soft vanilla settles underneath, smoothing the citrus into a warm, softly creamy finish.",
+    whatItSmellsLike:
+      "Bright sparkling tangerine lifted by a bubbly champagne accord, softened with smooth vanilla.",
+    mood: "Bright. Playful. Golden. Celebratory. Juicy with a soft creamy finish.",
+    notes: {
+      top: ["Tangerine"],
+      heart: ["Champagne Accord"],
+      base: ["Soft Vanilla"],
+    },
+    texture:
+      "Airy, marshmallow-soft whip with a bright, silky finish that lets the sparkling citrus shine.",
+    reviews: [],
+    availableIn: { body_butter: true, roll_on: true },
+  },
+
+  {
     slug: "tropical-glow",
     name: "Tropical Glow",
     collection: "Endless Summer",
