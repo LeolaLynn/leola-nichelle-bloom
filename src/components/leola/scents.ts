@@ -23,7 +23,7 @@ export type Scent = {
   notes: { top: string[]; heart: string[]; base: string[] };
   texture: string;
   reviews: Review[];
-  availableIn: { body_oil: boolean; roll_on: boolean };
+  availableIn: { body_butter: boolean; roll_on: boolean };
 };
 
 // =====================================================================
@@ -100,7 +100,7 @@ export const SCENTS: Scent[] = [
       { name: "Nia C.", stars: 5, quote: "Oooh I love how soft and smooth the texture is. This feels PERFECT." },
       { name: "Shanice W.", stars: 5, quote: "THIS IS THE TEXTURE I'VE BEEN LOOKING FOR — perfectly soft and creamy." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "suede",
@@ -124,7 +124,7 @@ export const SCENTS: Scent[] = [
       { name: "Erica T.", stars: 5, quote: "My husband actually asked what fragrance I was wearing and he NEVER notices stuff like that." },
       { name: "Kelsey N.", stars: 4, quote: "I usually go for sweeter scents but this one surprised me. Very clean luxury vibes." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "skullz-on-the-beach",
@@ -149,7 +149,7 @@ export const SCENTS: Scent[] = [
       { name: "Ashley P.", stars: 5, quote: "I love that it's lightweight for warmer temps. Doesn't feel sticky at ALL." },
       { name: "Renee H.", stars: 5, quote: "Definitely unisex in the best way." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "decadence",
@@ -173,7 +173,7 @@ export const SCENTS: Scent[] = [
       { name: "Lori S.", stars: 5, quote: "Smells like warm gooey caramel and melted chocolate. Literally addictive." },
       { name: "Melissa K.", stars: 4, quote: "Very sweet and rich. A little goes a long way for me personally." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "hush",
@@ -196,7 +196,7 @@ export const SCENTS: Scent[] = [
       { name: "Amaya T.", stars: 5, quote: "Feels like being wrapped in a warm blanket before bed." },
       { name: "Sienna B.", stars: 5, quote: "Soft, golden, comforting — like being wrapped in a warm blanket." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
 
   // ============== ENDLESS SUMMER (Future) ==============
@@ -217,7 +217,7 @@ export const SCENTS: Scent[] = [
       { name: "Stephanie M.", stars: 5, quote: "Tropical Glow makes me think of my honeymoon in Tahiti." },
       { name: "Bianca T.", stars: 5, quote: "Tropical Glow is HAPPY in a jar." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "mango-madness",
@@ -235,7 +235,7 @@ export const SCENTS: Scent[] = [
     reviews: [
       { name: "Cierra W.", stars: 5, quote: "Mango Madness smells juicy and creamy at the same time." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "berried-treasure",
@@ -253,7 +253,7 @@ export const SCENTS: Scent[] = [
     reviews: [
       { name: "Courtney F.", stars: 5, quote: "Berried Treasure smells edible in the BEST way." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "summer-muse",
@@ -271,7 +271,7 @@ export const SCENTS: Scent[] = [
     reviews: [
       { name: "Tiana S.", stars: 5, quote: "This smells feminine, confident, and kinda addictive honestly." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
 
   // ============== GOTHIC ROMANCE (Future) ==============
@@ -292,7 +292,7 @@ export const SCENTS: Scent[] = [
       { name: "Raven L.", stars: 5, quote: "Eternally Embraced is my favorite from the gothic chapter." },
       { name: "Kiara M.", stars: 5, quote: "This smells like candlelight and silk." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "ashes-of-roses",
@@ -310,7 +310,7 @@ export const SCENTS: Scent[] = [
     reviews: [
       { name: "Celeste R.", stars: 5, quote: "If you like smoky rose scents you HAVE to try this one." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "whispers-at-twilight",
@@ -328,7 +328,7 @@ export const SCENTS: Scent[] = [
     reviews: [
       { name: "Amber J.", stars: 5, quote: "Whispers at Twilight smells dreamy and soft." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
   {
     slug: "forever-berried",
@@ -346,7 +346,7 @@ export const SCENTS: Scent[] = [
     reviews: [
       { name: "Tori D.", stars: 5, quote: "Forever Berried is juicy, dark, and sexy." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
 
   // ============== HOLIDAY (Future) ==============
@@ -367,7 +367,7 @@ export const SCENTS: Scent[] = [
       { name: "Nicole A.", stars: 5, quote: "Cashmere Glow smells comforting and expensive at the same time." },
       { name: "Faith J.", stars: 5, quote: "Soft blankets, warm skin, and a luxury hotel robe." },
     ],
-    availableIn: { body_oil: true, roll_on: true },
+    availableIn: { body_butter: true, roll_on: true },
   },
 ];
 
