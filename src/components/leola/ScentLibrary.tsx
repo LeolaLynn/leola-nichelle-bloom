@@ -9,7 +9,7 @@ export const ScentLibrary = () => {
       <div className="container">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-xs uppercase tracking-[0.4em] text-rose-gold">The Core Collection</span>
-          <h2 className="font-serif text-4xl md:text-5xl text-primary mt-3">Five scents. One ritual.</h2>
+          <h2 className="font-serif text-4xl md:text-5xl text-primary mt-3">Six scents. One ritual.</h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
             Tap any scent to open its story — fragrance notes, what it smells like,
             mood, texture, and what people are saying.
