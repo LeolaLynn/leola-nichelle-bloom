@@ -18,7 +18,7 @@ export const RitualSection = () => {
             From whipped cream to silken oil.
           </h2>
           <p className="mt-5 font-serif italic text-xl text-cocoa/80 text-balance max-w-2xl mx-auto">
-            Scoop a small dollop. The Luxury Body Oil Soufflé melts the second it meets warm skin —
+            Scoop a small dollop. The Mango + Kokum Whipped Body Butter melts the second it meets warm skin —
             transforming from a marshmallow-soft cream into a silky, dry-touch oil.
           </p>
         </div>

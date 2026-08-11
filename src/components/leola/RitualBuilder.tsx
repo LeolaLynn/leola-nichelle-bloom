@@ -23,7 +23,7 @@ type Pick = {
 
 /**
  * Interactive Ritual Builder
- * Customers compose a ritual from Scrub + Mango + Kokum Whipped Body Butter + Roll-On
+ * Customers compose a ritual from Whipped Body Butter + Roll-On Perfume Oil
  * with bundle pricing applied in real time:
  *   2 items = 10% off · 3 items = 15% off · 4+ items = 20% off
  */

@@ -12,7 +12,7 @@ const AboutPage = () => (
         designed to feel like a memory — warm, intimate, and unmistakably yours.
       </p>
       <p>
-        Our signature is the <strong>Luxury Body Oil Soufflé</strong>: a marshmallow-soft
+        Our signature is the <strong>Mango + Kokum Whipped Body Butter</strong>: a marshmallow-soft
         whipped oil that melts into skin with a silky, non-greasy finish. It's the
         ritual we built the house around.
       </p>
