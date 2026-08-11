@@ -13,7 +13,7 @@ import { toast } from "sonner";
 export const ScentCard = ({ scent }: { scent: Scent }) => {
   const [open, setOpen] = useState(false);
   const [productId, setProductId] = useState<ProductTypeId>(
-    scent.availableIn.body_oil ? "body_oil" : "roll_on"
+    scent.availableIn.body_butter ? "body_butter" : "roll_on"
   );
   const product = PRODUCT_TYPES[productId];
   const [sizeId, setSizeId] = useState<string>(product.sizes[0].id);

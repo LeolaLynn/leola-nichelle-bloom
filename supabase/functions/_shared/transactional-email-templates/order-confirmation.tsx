@@ -187,7 +187,7 @@ export const template = {
     tax_cents: 432,
     total_cents: 6632,
     items: [
-      { product_name: 'Luxury Body Oil Soufflé', scent: 'Velvet', size_label: '4 oz', quantity: 1, line_total_cents: 3400 },
+      { product_name: 'Mango + Kokum Whipped Body Butter', scent: 'Velvet', size_label: '4 oz', quantity: 1, line_total_cents: 3400 },
       { product_name: 'Perfume Oil Roller', scent: 'Hush', size_label: '10 ml', quantity: 1, line_total_cents: 2000 },
     ],
     shippingAddress: {

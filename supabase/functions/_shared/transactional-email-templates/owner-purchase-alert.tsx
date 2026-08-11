@@ -97,7 +97,7 @@ export const template = {
     orderNumber: 'abcd1234',
     total_cents: 6800,
     currency: 'usd',
-    itemSummary: '• Luxury Body Oil Soufflé — Velvet (4 oz) × 1\n• Perfume Oil Roller — Hush (10 ml) × 1',
+    itemSummary: '• Mango + Kokum Whipped Body Butter — Velvet (4 oz) × 1\n• Perfume Oil Roller — Hush (10 ml) × 1',
     shippingMethod: 'Standard Shipping',
     shippingAddress: { line1: '123 Cocoa Ln', city: 'Atlanta', state: 'GA', postal_code: '30301', country: 'US' },
     placedAt: new Date().toLocaleString('en-US'),

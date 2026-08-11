@@ -23,16 +23,16 @@ type Pick = {
 
 /**
  * Interactive Ritual Builder
- * Customers compose a ritual from Scrub + Luxury Body Oil Soufflé + Roll-On
+ * Customers compose a ritual from Whipped Body Butter + Roll-On Perfume Oil
  * with bundle pricing applied in real time:
  *   2 items = 10% off · 3 items = 15% off · 4+ items = 20% off
  */
 export const RitualBuilder = () => {
   const [picks, setPicks] = useState<Pick[]>([]);
-  const [productId, setProductId] = useState<ProductTypeId>("body_oil");
+  const [productId, setProductId] = useState<ProductTypeId>("body_butter");
   const coreScents = SCENTS.filter((s) => s.collection === "Core");
   const [scent, setScent] = useState<string>(coreScents[0].name);
-  const [sizeId, setSizeId] = useState<string>(PRODUCT_TYPES.body_oil.sizes[0].id);
+  const [sizeId, setSizeId] = useState<string>(PRODUCT_TYPES.body_butter.sizes[0].id);
   const { add, open } = useCart();
 
   const product = PRODUCT_TYPES[productId];
@@ -91,7 +91,7 @@ export const RitualBuilder = () => {
             Build Your Ritual
           </h2>
           <p className="mt-5 text-muted-foreground max-w-2xl mx-auto">
-            Layer Luxury Body Oil Soufflé with Roll-On Perfume Oil — your discount grows as your ritual does.
+            Layer Mango + Kokum Whipped Body Butter with Roll-On Perfume Oil — your discount grows as your ritual does.
           </p>
         </div>
 

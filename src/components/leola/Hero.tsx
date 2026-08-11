@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import jar from "@/assets/cloud-whip-jar.jpg";
+import jar from "@/assets/whipped-body-butter-jar.jpg";
 import bg from "@/assets/hero-bg.jpg";
 import { Button } from "@/components/ui/button";
 
@@ -45,7 +45,7 @@ export const Hero = () => {
           <div className="absolute inset-8 rounded-full gradient-gold blur-3xl opacity-50" />
           <img
             src={jar}
-            alt="Leola Nichelle Luxury Body Oil Soufflé jar resting on champagne satin under candlelight"
+            alt="Leola Nichelle Mango + Kokum Whipped Body Butter jar on champagne satin under candlelight"
             width={1024}
             height={1024}
             className="relative w-72 h-72 md:w-[28rem] md:h-[28rem] object-cover rounded-full shadow-elegant"
