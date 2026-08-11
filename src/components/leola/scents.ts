@@ -199,7 +199,6 @@ export const SCENTS: Scent[] = [
     availableIn: { body_butter: true, roll_on: true },
   },
 
-  // ============== ENDLESS SUMMER (Future) ==============
   {
     slug: "golden-fizz",
     name: "Golden Fizz",
@@ -221,6 +220,7 @@ export const SCENTS: Scent[] = [
     availableIn: { body_butter: true, roll_on: true },
   },
 
+  // ============== ENDLESS SUMMER (Future) ==============
   {
     slug: "tropical-glow",
     name: "Tropical Glow",
