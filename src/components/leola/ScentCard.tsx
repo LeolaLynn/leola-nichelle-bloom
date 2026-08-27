@@ -50,11 +50,18 @@ export const ScentCard = ({ scent }: { scent: Scent }) => {
         </h3>
         <p className="mt-2 font-serif italic text-cocoa/80 text-sm">{scent.tagline}</p>
         <div className="mt-4 flex items-center justify-between text-xs text-muted-foreground">
-          <span className="inline-flex items-center gap-1">
-            <Star className="h-3 w-3 fill-rose-gold text-rose-gold" />
-            {(scent.reviews.reduce((s, r) => s + r.stars, 0) / Math.max(1, scent.reviews.length)).toFixed(1)}
-            <span className="opacity-60">· {scent.reviews.length} reviews</span>
-          </span>
+          {scent.reviews.length > 0 ? (
+            <span className="inline-flex items-center gap-1">
+              <Star className="h-3 w-3 fill-rose-gold text-rose-gold" />
+              {(scent.reviews.reduce((s, r) => s + r.stars, 0) / scent.reviews.length).toFixed(1)}
+              <span className="opacity-60">· {scent.reviews.length} reviews</span>
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-rose-gold/90">
+              <Sparkles className="h-3 w-3" />
+              New scent
+            </span>
+          )}
           <span className="inline-flex items-center gap-1 text-rose-gold">
             {open ? "Hide story" : "Tap to explore"}
             <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`} />
@@ -102,25 +109,27 @@ export const ScentCard = ({ scent }: { scent: Scent }) => {
           </div>
 
           {/* Reviews */}
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-rose-gold mb-2">What People Are Saying</p>
-            <div className="space-y-2">
-              {scent.reviews.map((r, i) => (
-                <blockquote key={i} className="rounded-xl border border-border/50 bg-background/60 px-4 py-3">
-                  <div className="flex items-center gap-1 mb-1">
-                    {Array.from({ length: r.stars }).map((_, k) => (
-                      <Star key={k} className="h-3 w-3 fill-rose-gold text-rose-gold" />
-                    ))}
-                    {Array.from({ length: 5 - r.stars }).map((_, k) => (
-                      <Star key={`o${k}`} className="h-3 w-3 text-muted-foreground/30" />
-                    ))}
-                    <span className="ml-2 text-[11px] uppercase tracking-wider text-muted-foreground">{r.name}</span>
-                  </div>
-                  <p className="text-sm text-foreground/80 italic leading-snug">"{r.quote}"</p>
-                </blockquote>
-              ))}
+          {scent.reviews.length > 0 && (
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.3em] text-rose-gold mb-2">What People Are Saying</p>
+              <div className="space-y-2">
+                {scent.reviews.map((r, i) => (
+                  <blockquote key={i} className="rounded-xl border border-border/50 bg-background/60 px-4 py-3">
+                    <div className="flex items-center gap-1 mb-1">
+                      {Array.from({ length: r.stars }).map((_, k) => (
+                        <Star key={k} className="h-3 w-3 fill-rose-gold text-rose-gold" />
+                      ))}
+                      {Array.from({ length: 5 - r.stars }).map((_, k) => (
+                        <Star key={`o${k}`} className="h-3 w-3 text-muted-foreground/30" />
+                      ))}
+                      <span className="ml-2 text-[11px] uppercase tracking-wider text-muted-foreground">{r.name}</span>
+                    </div>
+                    <p className="text-sm text-foreground/80 italic leading-snug">"{r.quote}"</p>
+                  </blockquote>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
 

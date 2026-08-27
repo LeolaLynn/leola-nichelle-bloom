@@ -33,7 +33,7 @@ export const Hero = () => {
           </p>
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
             <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-cocoa rounded-full px-10 py-6 text-sm tracking-[0.2em] uppercase shadow-elegant">
-              <a href="#featured">Shop The Ritual</a>
+              <a href="#library">Shop The Ritual</a>
             </Button>
             <Button asChild variant="outline" size="lg" className="rounded-full px-10 py-6 text-sm tracking-[0.2em] uppercase border-cocoa/40 text-cocoa hover:bg-cocoa hover:text-cream">
               <a href="#library">Explore Scents</a>
