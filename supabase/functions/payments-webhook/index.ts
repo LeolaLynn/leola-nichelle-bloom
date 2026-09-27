@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { createStripeClient, verifyWebhook, type StripeEnv } from "../_shared/stripe.ts";
+import { verifySessionAgainstCatalog } from "../_shared/checkout-pricing.ts";
 
 const supabase = createClient(
   Deno.env.get("SUPABASE_URL")!,
@@ -14,7 +15,20 @@ async function handleSessionCompleted(session: any, env: StripeEnv) {
   });
 
   const itemsMeta = (full.metadata as any)?.items;
-  const parsedItems = itemsMeta ? JSON.parse(itemsMeta) : [];
+  let parsedItems: any[] = [];
+  try { parsedItems = itemsMeta ? JSON.parse(itemsMeta) : []; } catch { parsedItems = []; }
+
+  const mismatch = verifySessionAgainstCatalog(
+    parsedItems, full.amount_subtotal, full.total_details?.amount_discount,
+  );
+  if (mismatch) {
+    // Tamper monitoring — no customer data logged.
+    console.warn(JSON.stringify({
+      event: "webhook_session_rejected", reason: mismatch, session_id: full.id, env,
+      amount_subtotal: full.amount_subtotal, amount_discount: full.total_details?.amount_discount,
+    }));
+    return;
+  }
 
   const { data: existing } = await supabase
     .from("orders")
