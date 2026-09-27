@@ -1,9 +1,9 @@
 import { assertEquals, assertThrows } from "https://deno.land/std@0.224.0/assert/mod.ts";
-import { lookupUnitPriceCents, bundleDiscountPercent } from "./catalog.ts";
+import { lookupUnitPriceCents, bundleDiscountPercent } from "../_shared/catalog.ts";
 import {
   priceCart, computeTotals, buildLineItems, encodeItemsMeta,
   verifySessionAgainstCatalog, CheckoutValidationError,
-} from "./checkout-pricing.ts";
+} from "../_shared/checkout-pricing.ts";
 
 const BB = "Mango + Kokum Whipped Body Butter";
 const RO = "Roll-On Perfume Oil";
